@@ -218,6 +218,7 @@ loginBtn.forEach((btn) => {
     overlay.classList.add("active");
     hamMenu.classList.remove("active");
     offScreenMenu.classList.remove("active");
+    loginForgot.style.visibility = "hidden";
   });
 });
 
@@ -308,4 +309,5 @@ lgin.addEventListener("click", () => {
   overlay.classList.add("active");
   hamMenu.classList.remove("active");
   offScreenMenu.classList.remove("active");
+  loginForgot.style.visibility = "hidden";
 });
