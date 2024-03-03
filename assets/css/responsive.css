@@ -118,6 +118,10 @@
   .login__term {
     font-size: 11px;
   }
+
+  .btn-code {
+    right: 4px;
+  }
 }
 
 @media (max-width: 767.98px) {
