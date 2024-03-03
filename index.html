@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nguyễn Dũng | TH27.53</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/responsive.css" />
+
+    <!-- Favicon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="./assets/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./assets/favicon/safari-pinned-tab.svg"
+      color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Script -->
+    <script src="./assets/js/template.js"></script>
+    <script defer src="./assets/js/script.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header" class="header">
+      <div class="container">
+        <nav class="header__navbar">
+          <!-- Menu -->
+          <div class="header__ham-menu">
+            <div class="off-screen-menu">
+              <div class="header__cate">
+                <a class="header__cta-ham lgin-btn" href="#!">
+                  <img src="./assets/icon/user-ham.svg" alt="" />Đăng Nhập/Đăng Ký</a
+                >
+                <h2 class="sidebar__header">DANH MỤC</h2>
+                <ul>
+                  <ul class="cate-list">
+                    <li>
+                      <a class="cate-link" href="#!">Danh mục 1</a>
+                    </li>
+                    <li class="cate-item">
+                      <a class="cate-link" href="#!">Danh mục 2</a>
+                    </li>
+                    <li class="cate-item">
+                      <a class="cate-link" href="#!">Danh mục 3</a>
+                    </li>
+                    <li class="cate-item">
+                      <a class="cate-link" href="#!">Danh mục 4</a>
+                    </li>
+                    <li class="cate-item">
+                      <a class="cate-link" href="#!">Danh mục 5</a>
+                    </li>
+                    <li class="cate-item">
+                      <a class="cate-link" href="#!">Danh mục 6</a>
+                    </li>
+                    <li class="cate-item">
+                      <a class="cate-link" href="#!">Danh mục 7</a>
+                    </li>
+                  </ul>
+                </ul>
+              </div>
+            </div>
+
+            <div class="ham-menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <!-- Logo -->
+          <a class="logo" href="#"> N<span>D</span>shop</a>
+          <!-- Search -->
+          <form class="header__search-field" action="" method="get">
+            <input
+              required
+              oninvalid="this.setCustomValidity('Hãy nhập từ khóa')"
+              oninput="this.setCustomValidity('')"
+              name=""
+              class="header__search-bar"
+              type="text"
+              autocomplete="off"
+              maxlength="60"
+              placeholder="Tìm kiếm..." />
+            <label for="" class="btn search-btn">
+              <input type="submit" class="hidden-input" name="" />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path
+                  d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+              </svg>
+            </label>
+          </form>
+          <!-- CTA -->
+          <div class="header__cart" href="#!">
+            <img class="header__cart-img" src="./assets/icon/cart.svg" alt="" />
+            <p class="header__cart-desc">Giỏ hàng</p>
+          </div>
+          <div class="cart-info">
+            <p class="cart-title">GIỎ HÀNG</p>
+            <ul class="cart-items">
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 1</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 2</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 3</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 4</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 5</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 6</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 7</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 8</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 9</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 10</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 11</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 12</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 13</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 14</a>
+              </li>
+              <li>
+                <a class="cart-item" href="#!">Đơn hàng 15</a>
+              </li>
+            </ul>
+            <div class="cart-total">
+              <p class="total-desc">TỔNG TIỀN:</p>
+              <p class="total-price">1.999.999đ</p>
+            </div>
+            <a href="#!" class="see-cart btn">XEM GIỎ HÀNG</a>
+          </div>
+
+          <span class="separator"></span>
+          <div class="header__cta">
+            <a href="#!" class="btn btn-trans lgin-btn">Đăng Nhập</a>
+            <span></span>
+            <a href="#!" class="btn regis-btn">Đăng Ký</a>
+          </div>
+          <a class="header__cta-mobile lgin-btn" href="#!"
+            ><img src="./assets/icon/user.svg" alt=""
+          /></a>
+        </nav>
+        <div class="header__overlay hidden"></div>
+      </div>
+      <span class="overlay"></span>
+    </header>
+    <!-- <script>
+      load("#header", "./assets/templates/header.html");
+    </script> -->
+
+    <!-- Main -->
+    <main class="main">
+      <div class="container">
+        <!-- Carousel -->
+        <div class="product__banner">
+          <div class="product__carousel">
+            <div class="carousel-container" data-carousel>
+              <button class="carousel-btn prev" data-carousel-btn="prev">
+                <img src="./assets/icon/chevron-left.svg" alt="" />
+              </button>
+              <button class="carousel-btn next" data-carousel-btn="next">
+                <img src="./assets/icon/chevron-right.svg" alt="" />
+              </button>
+              <ul data-slides>
+                <!-- Thêm ảnh, thêm thẻ li -->
+                <li class="carousel-slide" data-active>
+                  <a href="#!"
+                    ><img
+                      src="./assets/img/856d76a2fb06e2fbf00a82d2e37151d9 - Copy.png"
+                      alt=""
+                  /></a>
+                </li>
+                <li class="carousel-slide">
+                  <a href="#!">
+                    <img
+                      src="./assets/img/vn-50009109-0bb3beef4e29a1cdf77235269046a28a.jpg"
+                      alt=""
+                  /></a>
+                </li>
+                <li class="carousel-slide">
+                  <a href="#!">
+                    <img
+                      src="./assets/img/vn-50009109-6a84dde425b72c80370b89405224b590.jpg"
+                      alt=""
+                  /></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="product__banner-more">
+            <a href="#!">
+              <img
+                src="./assets/img/vn-50009109-935d3eab7126fc6c50b4a40b98a289ae.png"
+                alt=""
+                class="product__banner-img"
+            /></a>
+            <a href="#!">
+              <img
+                src="./assets/img/vn-50009109-741531551b925b11bf91aa261764913e.png"
+                alt=""
+                class="product__banner-img"
+            /></a>
+          </div>
+        </div>
+        <div class="main__wrapper">
+          <!-- Sidebar -->
+          <section class="sidebar">
+            <div class="sidebar__wrapper">
+              <div class="sidebar__top">
+                <h2 class="sidebar__header">Danh mục</h2>
+                <ul class="cate-list">
+                  <li class="cate-item">
+                    <a class="cate-link" href="#!">Danh mục 1</a>
+                  </li>
+                  <li class="cate-item">
+                    <a class="cate-link" href="#!">Danh mục 2</a>
+                  </li>
+                  <li class="cate-item">
+                    <a class="cate-link" href="#!">Danh mục 3</a>
+                  </li>
+                  <li class="cate-item">
+                    <a class="cate-link" href="#!">Danh mục 4</a>
+                  </li>
+                  <li class="cate-item">
+                    <a class="cate-link" href="#!">Danh mục 5</a>
+                  </li>
+                  <li class="cate-item">
+                    <a class="cate-link" href="#!">Danh mục 6</a>
+                  </li>
+                  <li class="cate-item">
+                    <a class="cate-link" href="#!">Danh mục 7</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="sidebar__bottom">
+                <h2 class="sidebar__header">Nổi bật</h2>
+                <ul class="cate-list"></ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- Products -->
+          <section class="product">
+            <div class="product__filter">
+              <h2 class="product__filter-title">TẤT CẢ SẢN PHẨM:</h2>
+              <div class="filter-container">
+                <div class="filter-btn">
+                  <img src="./assets/icon/filter.svg" alt="" />
+                  <p>Sắp xếp</p>
+                </div>
+                <div class="filter-opt">
+                  <ul>
+                    <li>
+                      <a href="#!" class="filter-choice">Sản Phẩm Nổi Bật</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="filter-choice">Giá: Tăng Dần</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="filter-choice">Giá: Giảm Dần</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="filter-choice">Tên: A - Z</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="filter-choice">Tên: Z - A</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="filter-choice">Cũ Nhất</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="filter-choice">Mới Nhất</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="filter-choice">Bán Chạy Nhất</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="product__wrapper">
+              <article class="product__card">
+                <img
+                  src="./assets/img/nd-high-resolution-logo-transparent.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Trường hợp ảnh vừa đẹp, nền trắng hoặc transparent.
+                  </h5>
+                  <p class="product__desc">
+                    Tiêu đề và mô tả đều được tối ưu chỉ hiển thị 2 dòng, ví dụ: Lorem
+                    ipsum dolor sit amet consectetur adipisicing elit. Deserunt,
+                    dolorem!
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/Arcane.S01E05.Everybody.Wants.to.Be.My.Enemy29.08.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Trường hợp ảnh quá dài theo chiều ngang (32/9).
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/Arcane.S01E09.The.Monster.You.Created.17.41.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Trường hợp ảnh quá dài theo chiều dọc (9/32).
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/99a7f74920f066ea9094e1a50cfb0f7b.jpg.webp"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Trường hợp ảnh đẹp vừa vặn với khung thẻ.
+                  </h5>
+                  <p class="product__desc">
+                    Ảnh banner và tỉ lệ ảnh lấy từ shoppe, còn ảnh trên này lấy từ tiki
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/nd-high-resolution-logo-transparent.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/nd-high-resolution-logo-transparent.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/nd-high-resolution-logo-transparent.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/nd-high-resolution-logo-transparent.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/nd-high-resolution-logo-transparent.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/nd-high-resolution-logo-transparent.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/nd-high-resolution-logo-transparent.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+              <article class="product__card">
+                <img
+                  src="./assets/img/nd-high-resolution-logo-transparent.png"
+                  alt=""
+                  class="product__img" />
+                <div class="product__body">
+                  <h5 class="product__title">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  </h5>
+                  <p class="product__desc">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora,
+                    quam.
+                  </p>
+                  <p class="product__price">199.000đ</p>
+                  <button class="btn product__btn">
+                    <img src="./assets/icon/cart.svg" alt="" />
+                    THÊM VÀO GIỎ
+                  </button>
+                </div>
+              </article>
+            </div>
+            <div class="product__more">
+              <a href="#!" class="product__more-number">&lt</a>
+              <a href="#!" class="product__more-number active">1</a>
+              <a href="#!" class="product__more-number">2</a>
+              <a href="#!" class="product__more-number">3</a>
+              <a href="#!" class="product__more-number">&gt</a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="footer__top">
+          <!-- col1 -->
+          <div class="footer__col">
+            <h4 class="footer__title">
+              Về <span class="footer__logo">N<span>D</span>shop</span>
+            </h4>
+            <div class="footer__separator"></div>
+            <p class="footer__desc">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, aliquid.
+              Nihil nesciunt blanditiis dolores. Earum excepturi et unde nisi eveniet
+              ea.
+            </p>
+            <ul class="footer__socials">
+              <li>
+                <a
+                  href="https://www.facebook.com/ndunv2503/"
+                  target="_blank"
+                  class="footer__social">
+                  <img src="./assets/icon/fb.svg" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#!" target="" class="footer__social">
+                  <img src="./assets/icon/twt.svg" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#!" target="" class="footer__social">
+                  <img src="./assets/icon/insta.svg" alt="" />
+                </a>
+              </li>
+              <li>
+                <a href="#!" target="" class="footer__social">
+                  <img src="./assets/icon/ytb.svg" alt="" />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- col2 -->
+          <div class="footer__col">
+            <h4 class="footer__title">Chính sách</h4>
+            <ul class="footer__items">
+              <li>
+                <a href="#!" class="footer__item"> Chính Sách Bảo Mật </a>
+              </li>
+              <li>
+                <a href="#!" class="footer__item"> Quy Định Bảo Hành </a>
+              </li>
+              <li>
+                <a href="#!" class="footer__item"> Chính Sách Đổi Trả </a>
+              </li>
+            </ul>
+          </div>
+          <!-- col3 -->
+          <div class="footer__col">
+            <h4 class="footer__title">Hỗ Trợ Khách Hàng</h4>
+            <ul class="footer__items">
+              <li>
+                <a href="#!" class="footer__item"> Thanh Toán</a>
+              </li>
+              <li>
+                <a href="#!" class="footer__item"> Tra Cứu Hóa Đơn</a>
+              </li>
+              <li>
+                <a href="#!" class="footer__item"> Trung Tâm Bảo Hành </a>
+              </li>
+            </ul>
+          </div>
+          <!-- col4 -->
+          <div class="footer__col">
+            <h4 class="footer__title">Thông Tin Liên Hệ</h4>
+            <ul class="footer__items">
+              <li class="footer__item footer__item--no-hover">
+                Địa chỉ: 1234 Rainbow Lane Fantasyville, Wonderland 98765
+              </li>
+              <li class="footer__item footer__item--no-hover">SĐT: 0387702503</li>
+              <li class="footer__item footer__item--no-hover">
+                Email: ndunv2503@gmail.com
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p class="footer__copyright">© Dung Nguyen - TH27.53</p>
+        </div>
+      </div>
+    </footer>
+    <!-- <script>
+      load("#footer", "./assets/templates/footer.html");
+    </script> -->
+
+    <section class="login hidden">
+      <!-- Đăng nhập -->
+      <div class="login__enb">
+        <button class="login__enb-btn login__enb-btn-back">
+          <img src="./assets/icon/chevron-left-login.svg" alt="" />
+        </button>
+        <button class="login__enb-btn login__enb-btn-exit">
+          <img src="./assets/icon/x.svg" alt="" />
+        </button>
+      </div>
+      <div class="login__header">
+        <a href="#" class="login__logo"
+          ><img src="./assets/img/nd-high-resolution-logo-transparent.png" alt=""
+        /></a>
+        <h1 class="login__title">Đăng nhập N<span>D</span>shop</h1>
+      </div>
+      <div class="login__body">
+        <div class="login__form-btns">
+          <div class="login__btn login__normal">
+            <img src="./assets/icon/user-ham.svg" alt="" /><span
+              >Sử dụng email / Số điện thoại</span
+            >
+          </div>
+          <div class="login__btn login_google">
+            <img src="./assets/icon/google.svg" alt="" /><span
+              >Đăng nhập với Google</span
+            >
+          </div>
+          <div class="login__btn login_facebook">
+            <img src="./assets/icon/fb-login.svg" alt="" /><span
+              >Đăng nhập với Facebook</span
+            >
+          </div>
+        </div>
+
+        <div class="login__form-sdt hidden">
+          <div class="login__label-group">
+            <label class="login__input-label" for="">Số điện thoại</label>
+            <label class="login__input-label login__input-label-email" for=""
+              >Đăng nhập với email</label
+            >
+          </div>
+
+          <input class="login__input" type="text" placeholder="Số điện thoại" />
+          <div class="login__input-wrapper">
+            <input
+              class="login__input"
+              type="text"
+              placeholder="Nhập mã xác nhận"
+              maxlength="6" />
+            <button class="btn btn-code disabled-btn">Gửi mã</button>
+          </div>
+
+          <button class="btn login-main-btn disabled-btn">ĐĂNG NHẬP</button>
+        </div>
+
+        <div class="login__form-email hidden">
+          <div class="login__label-group">
+            <label class="login__input-label" for="">Email</label>
+            <label class="login__input-label login__input-label-sdt" for=""
+              >Đăng nhập với SĐT</label
+            >
+          </div>
+
+          <input class="login__input" type="text" placeholder="Email" />
+          <input class="login__input" type="password" placeholder="Mật khẩu" />
+          <button class="btn login-main-btn disabled-btn">ĐĂNG NHẬP</button>
+        </div>
+      </div>
+      <div class="login__footer">
+        <p class="login__donthaveacc">
+          Bạn chưa có tài khoản? <a class="donthaveacc" href="#!">Đăng ký</a>
+        </p>
+        <p class="login__forgot">Quên mật khẩu?</p>
+        <p class="login__term">
+          Việc bạn sử dụng trang web này đồng nghĩa bạn đồng ý với <br />
+          <a href="#!">điều khoản sử dụng</a> của chúng tôi.
+        </p>
+      </div>
+    </section>
+
+    <!-- Đăng ký -->
+    <section class="register hidden">
+      <div class="login__enb">
+        <button class="login__enb-btn register__enb-btn-back">
+          <img src="./assets/icon/chevron-left-login.svg" alt="" />
+        </button>
+        <button class="login__enb-btn register__enb-btn-exit">
+          <img src="./assets/icon/x.svg" alt="" />
+        </button>
+      </div>
+      <div class="login__header">
+        <a href="#" class="login__logo"
+          ><img src="./assets/img/nd-high-resolution-logo-transparent.png" alt=""
+        /></a>
+        <h1 class="login__title">Đăng ký tài khoản</h1>
+      </div>
+
+      <div class="register__form-sdt">
+        <label class="login__input-label" for="">Tên của bạn?</label>
+        <input
+          class="login__input login__input-name"
+          type="text"
+          placeholder="Nhập họ và tên" />
+        <div class="login__label-group">
+          <label class="login__input-label" for="">Số điện thoại</label>
+          <label class="login__input-label register__input-label-email" for=""
+            >Đăng ký với email</label
+          >
+        </div>
+
+        <input class="login__input" type="text" placeholder="Số điện thoại" />
+        <div class="login__input-wrapper">
+          <input
+            class="login__input"
+            type="text"
+            placeholder="Nhập mã xác nhận"
+            maxlength="6" />
+          <button class="btn btn-code disabled-btn">Gửi mã</button>
+        </div>
+
+        <button class="btn login-main-btn disabled-btn">ĐĂNG KÝ</button>
+      </div>
+
+      <div class="register__form-email hidden">
+        <label class="login__input-label" for="">Tên của bạn?</label>
+        <input
+          class="login__input login__input-name"
+          type="text"
+          placeholder="Nhập họ và tên" />
+        <div class="login__label-group">
+          <label class="login__input-label" for="">Email</label>
+          <label class="login__input-label register__input-label-sdt" for=""
+            >Đăng ký với SĐT</label
+          >
+        </div>
+
+        <input class="login__input" type="text" placeholder="Email" />
+        <input class="login__input" type="password" placeholder="Mật khẩu" />
+        <p class="login__input-label pass-recommend">
+          Gợi ý: Mật khẩu cần có ít nhất 6 kí tự.
+        </p>
+        <div class="login__input-wrapper">
+          <input
+            class="login__input"
+            type="text"
+            placeholder="Nhập mã xác nhận"
+            maxlength="6" />
+          <button class="btn btn-code disabled-btn">Gửi mã</button>
+        </div>
+        <button class="btn login-main-btn disabled-btn">ĐĂNG KÝ</button>
+      </div>
+      <div class="login__footer">
+        <p class="login__haveacc">
+          Bạn đã có tài khoản? <a class="haveacc" href="#!">Đăng nhập</a>
+        </p>
+        <p class="login__term">
+          Việc bạn sử dụng trang web này đồng nghĩa bạn đồng ý với
+          <a href="#!">điều khoản sử dụng</a> của chúng tôi.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
