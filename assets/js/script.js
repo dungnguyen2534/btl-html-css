@@ -62,7 +62,6 @@ if (hasTouch()) {
     }
   } catch (ex) {}
 }
-
 // Hamburger menu, cart
 const toggleMenu = () => {
   hamMenu.classList.toggle("active");
@@ -113,20 +112,12 @@ cartBtn.addEventListener("click", () => {
 });
 
 function checkOverlayVisibility() {
-  if (isCartInfoVisible && window.innerWidth <= 991.98) {
-    overlay.classList.add("active");
-  } else {
-    overlay.classList.remove("active");
-  }
+  closeMenu();
 }
-
 function handleScrollAndResize() {
   checkOverlayVisibility();
 }
-
-window.addEventListener("scroll", handleScrollAndResize);
 window.addEventListener("resize", handleScrollAndResize);
-
 checkOverlayVisibility();
 
 // filter btn (Vì hover trên mobile đã disable)
