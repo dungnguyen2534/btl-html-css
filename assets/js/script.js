@@ -10,6 +10,8 @@ const filterOpt = $(".filter-opt");
 // cart
 const cartBtn = $(".header__cart");
 const cartInf = $(".cart-info");
+// searchbar
+const searchBar = $(".header__search-bar");
 // login
 const loginBtn = $$(".lgin-btn");
 const LoginForm = $(".login");
@@ -73,6 +75,7 @@ const closeMenu = () => {
   hamMenu.classList.remove("active");
   offScreenMenu.classList.remove("active");
   overlay.classList.remove("active");
+  overlay.style = "top: 0";
   LoginForm.classList.add("hidden");
   if (loginBtns.classList.contains("hidden")) {
     loginBtns.classList.remove("hidden");
