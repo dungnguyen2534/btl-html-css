@@ -37,8 +37,6 @@ const regisForm = $(".register");
 const regisFormEmail = $(".register__form-email");
 const regisFormSdt = $(".register__form-sdt");
 
-let isCartInfoVisible = false;
-
 // Bỏ hover trên mobile
 const hasTouch = () => {
   return (
@@ -64,18 +62,31 @@ if (hasTouch()) {
     }
   } catch (ex) {}
 }
-// Hamburger menu, cart
+
+// Tắt scroll trên mobile(khi hiển thị modal)
+const disableScrollOnMobile = () => {
+  if (hasTouch()) {
+    document.body.style.overflow = "hidden";
+  }
+};
+
+const enableScroll = () => {
+  document.body.style.overflow = "auto";
+};
+
+// Ham menu
 const toggleMenu = () => {
   hamMenu.classList.toggle("active");
   offScreenMenu.classList.toggle("active");
   overlay.classList.toggle("active");
+  disableScrollOnMobile();
 };
 
+// Hàm xử lí khi nhấn vào overlay
 const closeMenu = () => {
   hamMenu.classList.remove("active");
   offScreenMenu.classList.remove("active");
   overlay.classList.remove("active");
-  overlay.style = "top: 0";
   LoginForm.classList.add("hidden");
   if (loginBtns.classList.contains("hidden")) {
     loginBtns.classList.remove("hidden");
@@ -91,34 +102,41 @@ const closeMenu = () => {
   cartInf.style = "opacity: 0; visibility: hidden;";
   regisBack.style.visibility = "hidden";
   isCartInfoVisible = false;
+  enableScroll();
 };
 
 hamMenu.addEventListener("click", toggleMenu);
 overlay.addEventListener("click", closeMenu);
 
+// cart
+let isCartInfoVisible = false;
 cartBtn.addEventListener("click", () => {
   if (window.innerWidth > 991.98 && !isCartInfoVisible) {
     cartInf.style = "opacity: 1; visibility: visible;";
     isCartInfoVisible = true;
+    disableScrollOnMobile();
   } else if (window.innerWidth <= 991.98 && !isCartInfoVisible) {
     cartInf.style = "bottom: 0;opacity: 1; visibility: visible;";
     overlay.classList.add("active");
     isCartInfoVisible = true;
+    disableScrollOnMobile();
   } else {
     cartInf.style = "opacity: 0; visibility: hidden;";
     overlay.classList.remove("active");
     isCartInfoVisible = false;
+    enableScroll();
   }
 });
 
-// Gọi hàm closemenu nếu resize
+// Gọi closemenu nếu resize
 function handleResize() {
   closeMenu();
 }
+
 window.addEventListener("resize", handleResize);
 handleResize();
 
-// filter btn (Vì hover trên mobile đã disable)
+// filter btn
 const showFilter = () => {
   filterOpt.style = "opacity: 1; visibility: visible; height: initial";
 };
@@ -162,23 +180,6 @@ document.addEventListener("click", (event) => {
 });
 
 // Carousel
-let autoCarousel = setInterval(carouselHandler, 4500);
-function carouselHandler() {
-  const nextButton = $("[data-carousel-btn='next']");
-  const prevButton = $("[data-carousel-btn='prev']");
-  const nextClicked = nextButton.dataset.clicked === "true";
-  const prevClicked = prevButton.dataset.clicked === "true";
-
-  if (!nextClicked && !prevClicked) {
-    nextButton.click();
-  } else {
-    clearInterval(autoCarousel);
-    autoCarousel = setInterval(carouselHandler, 4500);
-    nextButton.dataset.clicked = "false";
-    prevButton.dataset.clicked = "false";
-  }
-}
-
 carouselBtn.forEach((button) => {
   button.addEventListener("click", (event) => {
     event.stopPropagation();
@@ -195,6 +196,23 @@ carouselBtn.forEach((button) => {
     delete activeSlide.dataset.active;
   });
 });
+
+let autoCarousel = setInterval(carouselHandler, 4500);
+function carouselHandler() {
+  const nextButton = $("[data-carousel-btn='next']");
+  const prevButton = $("[data-carousel-btn='prev']");
+  const nextClicked = nextButton.dataset.clicked === "true";
+  const prevClicked = prevButton.dataset.clicked === "true";
+
+  if (!nextClicked && !prevClicked) {
+    nextButton.click();
+  } else {
+    clearInterval(autoCarousel);
+    autoCarousel = setInterval(carouselHandler, 4500);
+    nextButton.dataset.clicked = "false";
+    prevButton.dataset.clicked = "false";
+  }
+}
 
 // Ẩn/hiện login/register
 const hideElement = (element) => {
@@ -216,7 +234,7 @@ loginBtn.forEach((btn) => {
     overlay.classList.add("active");
     hamMenu.classList.remove("active");
     offScreenMenu.classList.remove("active");
-    toggleVisibility(loginForgot, "hidden");
+    disableScrollOnMobile();
   });
 });
 
@@ -229,6 +247,7 @@ loginExit.addEventListener("click", () => {
     hideElement(emailLogin);
     toggleVisibility(loginBack, "hidden");
   }
+  enableScroll();
 });
 
 norLogin.addEventListener("click", () => {
@@ -275,6 +294,7 @@ regisBtn.addEventListener("click", () => {
   toggleVisibility(regisBack, "hidden");
   hamMenu.classList.remove("active");
   offScreenMenu.classList.remove("active");
+  disableScrollOnMobile();
 });
 
 regisExit.addEventListener("click", () => {
@@ -287,6 +307,7 @@ regisExit.addEventListener("click", () => {
     hideElement(regisFormEmail);
   }
   toggleVisibility(regisBack, "hidden");
+  enableScroll();
 });
 
 emailLabelRe.addEventListener("click", () => {
