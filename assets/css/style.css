@@ -913,6 +913,22 @@ input {
   border-top: 1px solid #888;
 }
 
+.footer__copyright {
+  font-size: 1.4rem;
+}
+
+.footer__link {
+  display: block;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  text-decoration: underline;
+  transition: color 0.15s ease;
+}
+
+.footer__link:hover {
+  color: var(--main-color);
+}
+
 /* Login/register modal */
 .login,
 .register {

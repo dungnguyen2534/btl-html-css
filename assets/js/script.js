@@ -84,25 +84,28 @@ const toggleMenu = () => {
 
 // Hàm xử lí khi nhấn vào overlay
 const closeMenu = () => {
+  enableScroll();
   hamMenu.classList.remove("active");
   offScreenMenu.classList.remove("active");
   overlay.classList.remove("active");
+
   LoginForm.classList.add("hidden");
+  regisForm.classList.add("hidden");
+  regisBack.style.visibility = "hidden";
+
+  isCartInfoVisible = false;
+  cartInf.style = "opacity: 0; visibility: hidden;";
+
+  if (regisFormSdt.classList.contains("hidden")) {
+    regisFormSdt.classList.remove("hidden");
+    regisFormEmail.classList.add("hidden");
+  }
   if (loginBtns.classList.contains("hidden")) {
     loginBtns.classList.remove("hidden");
     sdtLogin.classList.add("hidden");
     emailLogin.classList.add("hidden");
     loginBack.style.visibility = "hidden";
   }
-  regisForm.classList.add("hidden");
-  if (regisFormSdt.classList.contains("hidden")) {
-    regisFormSdt.classList.remove("hidden");
-    regisFormEmail.classList.add("hidden");
-  }
-  cartInf.style = "opacity: 0; visibility: hidden;";
-  regisBack.style.visibility = "hidden";
-  isCartInfoVisible = false;
-  enableScroll();
 };
 
 hamMenu.addEventListener("click", toggleMenu);
@@ -214,7 +217,7 @@ function carouselHandler() {
   }
 }
 
-// Ẩn/hiện login/register
+// Ẩn/hiện login - register
 const hideElement = (element) => {
   element.classList.add("hidden");
 };
