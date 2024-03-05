@@ -85,23 +85,20 @@ const closeMenu = () => {
     regisFormSdt.classList.remove("hidden");
     regisFormEmail.classList.add("hidden");
   }
+  cartInf.style = "opacity: 0; visibility: hidden;";
   regisBack.style.visibility = "hidden";
-  cartInf.style = "top: 100vh; opacity: 0; visibility: hidden;";
   isCartInfoVisible = false;
 };
 
 hamMenu.addEventListener("click", toggleMenu);
 overlay.addEventListener("click", closeMenu);
-cartInf.addEventListener("click", (event) => {
-  event.stopPropagation();
-});
 
 cartBtn.addEventListener("click", () => {
   if (window.innerWidth > 991.98 && !isCartInfoVisible) {
     cartInf.style = "opacity: 1; visibility: visible;";
     isCartInfoVisible = true;
   } else if (window.innerWidth <= 991.98 && !isCartInfoVisible) {
-    cartInf.style = "opacity: 1; visibility: visible;";
+    cartInf.style = "bottom: 0;opacity: 1; visibility: visible;";
     overlay.classList.add("active");
     isCartInfoVisible = true;
   } else {
@@ -111,20 +108,17 @@ cartBtn.addEventListener("click", () => {
   }
 });
 
-function checkOverlayVisibility() {
+// Gọi hàm closemenu nếu resize
+function handleResize() {
   closeMenu();
 }
-function handleScrollAndResize() {
-  checkOverlayVisibility();
-}
-window.addEventListener("resize", handleScrollAndResize);
-checkOverlayVisibility();
+window.addEventListener("resize", handleResize);
+handleResize();
 
 // filter btn (Vì hover trên mobile đã disable)
 const showFilter = () => {
   filterOpt.style = "opacity: 1; visibility: visible; height: initial";
 };
-
 const hideFilter = () => {
   filterOpt.style = "opacity: 0; visibility: hidden; height: 0";
 };
@@ -132,7 +126,6 @@ const hideFilter = () => {
 filterBtn.addEventListener("mouseleave", () => {
   hideFilter();
 });
-
 filterBtn.addEventListener("mouseover", () => {
   showFilter();
 });
@@ -200,96 +193,109 @@ carouselBtn.forEach((button) => {
   });
 });
 
-// Login
-loginExit.addEventListener("click", () => {
-  LoginForm.classList.add("hidden");
-  overlay.classList.remove("active");
-  if (loginBtns.classList.contains("hidden")) {
-    loginBtns.classList.remove("hidden");
-    sdtLogin.classList.add("hidden");
-    emailLogin.classList.add("hidden");
-    loginBack.style.visibility = "hidden";
-  }
-});
+// Ẩn/hiện login/register
+const hideElement = (element) => {
+  element.classList.add("hidden");
+};
 
+const showElement = (element) => {
+  element.classList.remove("hidden");
+};
+
+const toggleVisibility = (element, visibility) => {
+  element.style.visibility = visibility;
+};
+
+// login
 loginBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
-    LoginForm.classList.remove("hidden");
+    showElement(LoginForm);
     overlay.classList.add("active");
     hamMenu.classList.remove("active");
     offScreenMenu.classList.remove("active");
-    loginForgot.style.visibility = "hidden";
+    toggleVisibility(loginForgot, "hidden");
   });
 });
 
+loginExit.addEventListener("click", () => {
+  hideElement(LoginForm);
+  overlay.classList.remove("active");
+  if (loginBtns.classList.contains("hidden")) {
+    showElement(loginBtns);
+    hideElement(sdtLogin);
+    hideElement(emailLogin);
+    toggleVisibility(loginBack, "hidden");
+  }
+});
+
 norLogin.addEventListener("click", () => {
-  loginBtns.classList.add("hidden");
-  sdtLogin.classList.remove("hidden");
-  loginBack.style.visibility = "visible";
-  loginForgot.style.visibility = "hidden";
+  hideElement(loginBtns);
+  showElement(sdtLogin);
+  toggleVisibility(loginBack, "visible");
+  toggleVisibility(loginForgot, "hidden");
 });
 
 emailLabel.addEventListener("click", () => {
-  sdtLogin.classList.add("hidden");
-  emailLogin.classList.remove("hidden");
-  loginBack.style.visibility = "visible";
-  loginForgot.style.visibility = "visible";
+  hideElement(sdtLogin);
+  showElement(emailLogin);
+  toggleVisibility(loginBack, "visible");
+  toggleVisibility(loginForgot, "visible");
 });
 
 sdtLabel.addEventListener("click", () => {
-  sdtLogin.classList.remove("hidden");
-  emailLogin.classList.add("hidden");
-  loginBack.style.visibility = "visible";
-  loginForgot.style.visibility = "hidden";
+  showElement(sdtLogin);
+  hideElement(emailLogin);
+  toggleVisibility(loginBack, "visible");
+  toggleVisibility(loginForgot, "hidden");
 });
 
 loginBack.addEventListener("click", () => {
   if (!emailLogin.classList.contains("hidden")) {
     sdtLabel.click();
   } else if (!sdtLogin.classList.contains("hidden")) {
-    loginBtns.classList.remove("hidden");
-    sdtLogin.classList.add("hidden");
+    showElement(loginBtns);
+    hideElement(sdtLogin);
   }
   if (!loginBtns.classList.contains("hidden")) {
-    loginBack.style.visibility = "hidden";
+    toggleVisibility(loginBack, "hidden");
   }
 });
 
 if (!loginBtns.classList.contains("hidden")) {
-  loginBack.style.visibility = "hidden";
+  toggleVisibility(loginBack, "hidden");
 }
 
 // register
 regisBtn.addEventListener("click", () => {
-  regisForm.classList.remove("hidden");
+  showElement(regisForm);
   overlay.classList.add("active");
-  regisBack.style.visibility = "hidden";
+  toggleVisibility(regisBack, "hidden");
   hamMenu.classList.remove("active");
   offScreenMenu.classList.remove("active");
 });
 
 regisExit.addEventListener("click", () => {
-  regisForm.classList.add("hidden");
+  hideElement(regisForm);
   overlay.classList.remove("active");
   hamMenu.classList.remove("active");
   offScreenMenu.classList.remove("active");
   if (regisFormSdt.classList.contains("hidden")) {
-    regisFormSdt.classList.remove("hidden");
-    regisFormEmail.classList.add("hidden");
+    showElement(regisFormSdt);
+    hideElement(regisFormEmail);
   }
-  regisBack.style.visibility = "hidden";
+  toggleVisibility(regisBack, "hidden");
 });
 
 emailLabelRe.addEventListener("click", () => {
-  regisFormSdt.classList.add("hidden");
-  regisFormEmail.classList.remove("hidden");
-  regisBack.style.visibility = "visible";
+  hideElement(regisFormSdt);
+  showElement(regisFormEmail);
+  toggleVisibility(regisBack, "visible");
 });
 
 sdtLabelRe.addEventListener("click", () => {
-  regisFormSdt.classList.remove("hidden");
-  regisFormEmail.classList.add("hidden");
-  regisBack.style.visibility = "hidden";
+  showElement(regisFormSdt);
+  hideElement(regisFormEmail);
+  toggleVisibility(regisBack, "hidden");
 });
 
 regisBack.addEventListener("click", () => {
@@ -303,11 +309,12 @@ regis.addEventListener("click", () => {
   loginExit.click();
   regisBtn.click();
 });
+
 lgin.addEventListener("click", () => {
   regisExit.click();
-  LoginForm.classList.remove("hidden");
+  showElement(LoginForm);
   overlay.classList.add("active");
   hamMenu.classList.remove("active");
   offScreenMenu.classList.remove("active");
-  loginForgot.style.visibility = "hidden";
+  toggleVisibility(loginForgot, "hidden");
 });
