@@ -117,7 +117,6 @@ cartBtn.addEventListener("click", () => {
   if (window.innerWidth > 991.98 && !isCartInfoVisible) {
     cartInf.style = "opacity: 1; visibility: visible;";
     isCartInfoVisible = true;
-    disableScrollOnMobile();
   } else if (window.innerWidth <= 991.98 && !isCartInfoVisible) {
     cartInf.style = "bottom: 0;opacity: 1; visibility: visible;";
     overlay.classList.add("active");
@@ -152,10 +151,6 @@ filterBtn.addEventListener("mouseleave", () => {
 });
 filterBtn.addEventListener("mouseover", () => {
   showFilter();
-});
-
-filterOpt.addEventListener("touchstart", (event) => {
-  event.stopPropagation();
 });
 
 filterBtn.addEventListener("touchstart", () => {
