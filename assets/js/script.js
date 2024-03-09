@@ -92,6 +92,7 @@ const closeMenu = () => {
   LoginForm.classList.add("hidden");
   regisForm.classList.add("hidden");
   regisBack.style.visibility = "hidden";
+  loginForgot.style.visibility = "hidden";
 
   isCartInfoVisible = false;
   cartInf.style = "opacity: 0; visibility: hidden;";
@@ -118,7 +119,7 @@ cartBtn.addEventListener("click", () => {
     cartInf.style = "opacity: 1; visibility: visible;";
     isCartInfoVisible = true;
   } else if (window.innerWidth <= 991.98 && !isCartInfoVisible) {
-    cartInf.style = "bottom: 0;opacity: 1; visibility: visible;";
+    cartInf.style = "bottom: 0; opacity: 1; visibility: visible;";
     overlay.classList.add("active");
     isCartInfoVisible = true;
     disableScrollOnMobile();
@@ -129,14 +130,6 @@ cartBtn.addEventListener("click", () => {
     enableScroll();
   }
 });
-
-// Gọi closemenu nếu resize
-function handleResize() {
-  closeMenu();
-}
-
-window.addEventListener("resize", handleResize);
-handleResize();
 
 // filter btn
 const showFilter = () => {
@@ -149,11 +142,14 @@ const hideFilter = () => {
 filterBtn.addEventListener("mouseleave", () => {
   hideFilter();
 });
-filterBtn.addEventListener("mouseover", () => {
+filterBtn.addEventListener("mouseenter", () => {
   showFilter();
 });
 
-filterBtn.addEventListener("touchstart", () => {
+filterBtn.addEventListener("touchstart", (e) => {
+  e.target.closest("filter-Opt").addEventListener("touchstart", (opt) => {
+    opt.stopPropagation();
+  });
   const isVisible = filterOpt.style.visibility === "visible";
   if (isVisible) {
     hideFilter();
@@ -244,6 +240,7 @@ loginExit.addEventListener("click", () => {
     hideElement(sdtLogin);
     hideElement(emailLogin);
     toggleVisibility(loginBack, "hidden");
+    toggleVisibility(loginForgot, "hidden");
   }
   enableScroll();
 });
@@ -340,3 +337,29 @@ lgin.addEventListener("click", () => {
   offScreenMenu.classList.remove("active");
   toggleVisibility(loginForgot, "hidden");
 });
+
+// Xử lí resize
+function handleResize() {
+  enableScroll();
+  if (window.innerWidth > 991.98 && hamMenu.classList.contains("active")) {
+    hamMenu.classList.remove("active");
+    offScreenMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  }
+
+  if (window.innerWidth > 991.98 && isCartInfoVisible) {
+    overlay.classList.remove("active");
+    cartInf.style =
+      "height: initial; bottom: initial; opacity: 1; visibility: visible;";
+  } else if (window.innerWidth <= 991.98 && isCartInfoVisible) {
+    cartInf.style = "bottom: 0; opacity: 1; visibility: visible;";
+    overlay.classList.add("active");
+  }
+
+  if (overlay.classList.contains("active") && LoginForm.classList.contains("active")) {
+    overlay.classList.add("active");
+  }
+}
+
+window.addEventListener("resize", handleResize);
+handleResize();

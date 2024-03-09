@@ -56,6 +56,7 @@ a {
   max-width: 1320px;
   padding: 0 18px;
   margin: 0 auto;
+  position: relative;
 }
 
 input {
@@ -259,10 +260,15 @@ input {
   fill: #fff;
 }
 
+.cart {
+  position: relative;
+  flex-shrink: 0;
+}
+
 .header__cart {
   position: relative;
   display: flex;
-  flex-shrink: 0;
+
   align-items: center;
   padding: 10px 15px;
   transition: transform 0.25s ease;
@@ -310,14 +316,15 @@ input {
   position: absolute;
   display: flex;
   flex-direction: column;
-  right: 25%;
-  top: calc(var(--header-height) + 5px);
+  right: 38%;
+  top: calc(100% + 15px);
   width: 320px;
   padding: 15px;
   border-radius: 8px;
   background: #fff;
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
-  transition: all 0.2s ease;
+  transition-property: opacity, visibility;
+  transition-duration: 0.15s;
   z-index: 98;
   overscroll-behavior: none;
 }
@@ -948,7 +955,8 @@ input {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   z-index: 999;
   overflow: hidden;
-  transition: all 0.25s ease;
+  transition-property: opacity, visibility;
+  transition-duration: 3s;
 }
 
 .login__logo {
