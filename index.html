@@ -556,60 +556,63 @@
         <h1 class="login__title">Đăng ký tài khoản</h1>
       </div>
 
-      <div class="register__form-sdt">
-        <label class="login__input-label" for="">Tên của bạn?</label>
-        <input
-          class="login__input login__input-name"
-          type="text"
-          placeholder="Nhập họ và tên" />
-        <div class="login__label-group">
-          <label class="login__input-label" for="">Số điện thoại</label>
-          <label class="login__input-label register__input-label-email" for=""
-            >Đăng ký với email</label
-          >
-        </div>
-
-        <input class="login__input" type="text" placeholder="Số điện thoại" />
-        <div class="login__input-wrapper">
+      <div class="login__body">
+        <div class="register__form-sdt">
+          <label class="login__input-label" for="">Tên của bạn?</label>
           <input
-            class="login__input"
+            class="login__input login__input-name"
             type="text"
-            placeholder="Nhập mã xác nhận"
-            maxlength="6" />
-          <button class="btn btn-code disabled-btn">Gửi mã</button>
+            placeholder="Nhập họ và tên" />
+          <div class="login__label-group">
+            <label class="login__input-label" for="">Số điện thoại</label>
+            <label class="login__input-label register__input-label-email" for=""
+              >Đăng ký với email</label
+            >
+          </div>
+
+          <input class="login__input" type="text" placeholder="Số điện thoại" />
+          <div class="login__input-wrapper">
+            <input
+              class="login__input"
+              type="text"
+              placeholder="Nhập mã xác nhận"
+              maxlength="6" />
+            <button class="btn btn-code disabled-btn">Gửi mã</button>
+          </div>
+
+          <button class="btn login-main-btn disabled-btn">ĐĂNG KÝ</button>
         </div>
 
-        <button class="btn login-main-btn disabled-btn">ĐĂNG KÝ</button>
+        <div class="register__form-email hidden">
+          <label class="login__input-label" for="">Tên của bạn?</label>
+          <input
+            class="login__input login__input-name"
+            type="text"
+            placeholder="Nhập họ và tên" />
+          <div class="login__label-group">
+            <label class="login__input-label" for="">Email</label>
+            <label class="login__input-label register__input-label-sdt" for=""
+              >Đăng ký với SĐT</label
+            >
+          </div>
+
+          <input class="login__input" type="text" placeholder="Email" />
+          <input class="login__input" type="password" placeholder="Mật khẩu" />
+          <p class="login__input-label pass-recommend">
+            Gợi ý: Mật khẩu cần có ít nhất 6 kí tự.
+          </p>
+          <div class="login__input-wrapper">
+            <input
+              class="login__input"
+              type="text"
+              placeholder="Nhập mã xác nhận"
+              maxlength="6" />
+            <button class="btn btn-code disabled-btn">Gửi mã</button>
+          </div>
+          <button class="btn login-main-btn disabled-btn">ĐĂNG KÝ</button>
+        </div>
       </div>
 
-      <div class="register__form-email hidden">
-        <label class="login__input-label" for="">Tên của bạn?</label>
-        <input
-          class="login__input login__input-name"
-          type="text"
-          placeholder="Nhập họ và tên" />
-        <div class="login__label-group">
-          <label class="login__input-label" for="">Email</label>
-          <label class="login__input-label register__input-label-sdt" for=""
-            >Đăng ký với SĐT</label
-          >
-        </div>
-
-        <input class="login__input" type="text" placeholder="Email" />
-        <input class="login__input" type="password" placeholder="Mật khẩu" />
-        <p class="login__input-label pass-recommend">
-          Gợi ý: Mật khẩu cần có ít nhất 6 kí tự.
-        </p>
-        <div class="login__input-wrapper">
-          <input
-            class="login__input"
-            type="text"
-            placeholder="Nhập mã xác nhận"
-            maxlength="6" />
-          <button class="btn btn-code disabled-btn">Gửi mã</button>
-        </div>
-        <button class="btn login-main-btn disabled-btn">ĐĂNG KÝ</button>
-      </div>
       <div class="login__footer">
         <p class="login__haveacc">
           Bạn đã có tài khoản? <a class="haveacc" href="#!">Đăng nhập</a>

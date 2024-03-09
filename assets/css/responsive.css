@@ -95,6 +95,10 @@
     max-height: unset;
   }
 
+  .cart-sum {
+    left: 56%;
+  }
+
   .header__cta-mobile {
     display: flex;
     align-items: center;
@@ -194,6 +198,10 @@
 
   .cart-total {
     margin-top: auto;
+  }
+
+  .cart-sum {
+    left: 72%;
   }
 
   .separator,

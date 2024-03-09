@@ -10,6 +10,8 @@ const filterOpt = $(".filter-opt");
 // cart
 const cartBtn = $(".header__cart");
 const cartInf = $(".cart-info");
+const cartSum = $(".cart-sum");
+const cartItems = $$(".cart-item");
 // searchbar
 const searchBar = $(".header__search-bar");
 // login
@@ -130,6 +132,14 @@ cartBtn.addEventListener("click", () => {
     enableScroll();
   }
 });
+
+// if (cartItems && cartItems.length > 0) {
+//   cartSum.textContent = cartItems.length;
+// } else if (cartItems && cartItems.length > 99) {
+//   cartSum.textContent = "99+";
+// } else {
+//   cartSum.style.display = "none";
+// }
 
 // filter btn
 const showFilter = () => {

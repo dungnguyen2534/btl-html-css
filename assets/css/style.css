@@ -227,7 +227,7 @@ input {
 
 .header__search-bar {
   font-size: 1.6rem;
-  padding: 9px 50px 10px 15px;
+  padding: 9px 38px 10px 15px;
   width: 100%;
   background: #fff;
   border: 1px solid #ececec;
@@ -268,10 +268,24 @@ input {
 .header__cart {
   position: relative;
   display: flex;
-
   align-items: center;
   padding: 10px 15px;
   transition: transform 0.25s ease;
+}
+
+.cart-sum {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 24%;
+  top: 5px;
+  font-size: 9px;
+  font-weight: 600;
+  background: #ff6065;
+  color: #fff;
+  padding: 2px 4px 2px 3px;
+  border-radius: 44px;
 }
 
 .header__cart img:hover,
@@ -940,18 +954,18 @@ input {
 .login,
 .register {
   width: 460px;
-  height: 540px;
+  height: 520px;
   max-height: 90vh;
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 32px;
+  row-gap: 28px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 12px;
-  padding: 45px 70px;
+  padding: 35px 70px;
   background: #fff;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   z-index: 999;
@@ -960,8 +974,8 @@ input {
 }
 
 .register {
-  height: 950px;
-  max-height: 95vh;
+  height: 640px;
+  max-height: 90vh;
 }
 
 .login__logo {
@@ -1072,12 +1086,13 @@ input {
   border: 3px solid #dce0e3;
   border-radius: 44px;
   margin-top: 8px;
+  transition: border-color 0.12s ease;
+  outline: none;
 }
 
 .login__input:focus-within {
-  outline: 3px solid var(--main-color);
   caret-color: var(--main-color);
-  border-color: transparent;
+  border-color: var(--main-color);
 }
 
 .login__input-name {
