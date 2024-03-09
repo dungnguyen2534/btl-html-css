@@ -940,23 +940,28 @@ input {
 .login,
 .register {
   width: 460px;
-  min-height: 540px;
+  min-height: 72dvh;
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  row-gap: 32px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 8px;
-  padding: 50px;
+  border-radius: 12px;
+  padding: 45px 70px;
   background: #fff;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
   z-index: 999;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   transition-property: opacity, visibility;
   transition-duration: 3s;
+}
+
+.register {
+  min-height: 88dvh;
 }
 
 .login__logo {
@@ -985,7 +990,7 @@ input {
 
 .btn-code {
   position: absolute;
-  right: 6px;
+  right: 4.5px;
   padding: 9px 15px;
   top: 50%;
   transform: translateY(-50%);
@@ -1049,6 +1054,7 @@ input {
 }
 
 .login__term {
+  display: block;
   color: #666;
   text-align: center;
   font-size: 1.2rem;
