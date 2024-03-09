@@ -325,8 +325,8 @@ input {
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
   transition-property: opacity, visibility;
   transition-duration: 0.15s;
-  z-index: 98;
   overscroll-behavior: none;
+  z-index: 98;
 }
 
 .cart-info::before {
@@ -940,7 +940,8 @@ input {
 .login,
 .register {
   width: 460px;
-  min-height: 72dvh;
+  height: 540px;
+  max-height: 90vh;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -956,12 +957,11 @@ input {
   z-index: 999;
   overflow-y: auto;
   overflow-x: hidden;
-  transition-property: opacity, visibility;
-  transition-duration: 3s;
 }
 
 .register {
-  min-height: 88dvh;
+  height: 950px;
+  max-height: 95vh;
 }
 
 .login__logo {
