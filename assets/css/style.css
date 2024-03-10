@@ -1166,9 +1166,10 @@ input {
   font-size: 1.4rem;
 }
 
-.login__donthaveacc a,
-.login__haveacc a {
+.donthaveacc,
+.haveacc {
   color: var(--main-color);
+  cursor: pointer;
 }
 
 .login__term {
