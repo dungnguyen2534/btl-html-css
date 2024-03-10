@@ -95,6 +95,21 @@
     max-height: unset;
   }
 
+  .decr-quantity,
+  .card-item__quantity-input,
+  .incr-quantity {
+    border-radius: 6px;
+  }
+
+  .decr-quantity,
+  .incr-quantity {
+    width: 35px;
+  }
+
+  .card-item__quantity-input {
+    width: 50px;
+  }
+
   .cart-sum {
     left: 56%;
   }

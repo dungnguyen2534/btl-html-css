@@ -407,10 +407,6 @@ input {
   overflow: hidden;
 }
 
-.cart-item:hover {
-  background: var(--filter-choice-color);
-}
-
 .card-item__left {
   width: 100px;
 }
@@ -537,7 +533,7 @@ input {
 }
 
 .header__cta-ham img {
-  width: 26px;
+  width: 40px;
   margin-right: 10px;
 }
 

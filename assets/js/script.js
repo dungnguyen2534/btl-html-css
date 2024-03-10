@@ -133,13 +133,21 @@ cartBtn.addEventListener("click", () => {
   }
 });
 
-// if (cartItems && cartItems.length > 0) {
-//   cartSum.textContent = cartItems.length;
-// } else if (cartItems && cartItems.length > 99) {
-//   cartSum.textContent = "99+";
-// } else {
-//   cartSum.style.display = "none";
-// }
+cartItems.forEach((cartItem) => {
+  const incr = cartItem.querySelector(".incr-quantity");
+  const decr = cartItem.querySelector(".decr-quantity");
+  const cartItemQty = cartItem.querySelector(".card-item__quantity-input");
+
+  incr.addEventListener("click", function (event) {
+    cartItemQty.value = parseInt(cartItemQty.value) + 1;
+  });
+
+  decr.addEventListener("click", function (event) {
+    if (parseInt(cartItemQty.value) > 1) {
+      cartItemQty.value = parseInt(cartItemQty.value) - 1;
+    }
+  });
+});
 
 // filter btn
 const showFilter = () => {
