@@ -141,11 +141,13 @@ cartItems.forEach((cartItem) => {
   incr.addEventListener("click", function (event) {
     cartItemQty.value = parseInt(cartItemQty.value) + 1;
   });
-
   decr.addEventListener("click", function (event) {
     if (parseInt(cartItemQty.value) > 1) {
       cartItemQty.value = parseInt(cartItemQty.value) - 1;
     }
+  });
+  document.addEventListener("click", () => {
+    if (cartItemQty.value === "") cartItemQty.value = 1;
   });
 });
 
