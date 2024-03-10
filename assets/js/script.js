@@ -147,7 +147,7 @@ cartItems.forEach((cartItem) => {
     }
   });
   document.addEventListener("click", () => {
-    if (cartItemQty.value === "") cartItemQty.value = 1;
+    if (cartItemQty.value === "" || cartItemQty.value == "0") cartItemQty.value = 1;
   });
 });
 
