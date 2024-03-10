@@ -166,10 +166,6 @@ if (!hasTouch()) {
   });
 } else {
   filterBtn.addEventListener("click", () => {
-    filterOpt.addEventListener("click", (e) => {
-      e.stopPropagation();
-      hideFilter();
-    });
     const isVisible = filterOpt.style.visibility === "visible";
     if (isVisible) {
       hideFilter();
@@ -178,6 +174,11 @@ if (!hasTouch()) {
     }
   });
 }
+
+filterOpt.addEventListener("click", (e) => {
+  e.stopPropagation();
+  hideFilter();
+});
 
 // Xử lí khi click ra ngoài filter và cart(MH cảm ứng lớn)
 document.addEventListener("click", (event) => {
