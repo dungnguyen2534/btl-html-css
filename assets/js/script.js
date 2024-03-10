@@ -1,3 +1,6 @@
+// header
+const header = $("header");
+const sidebarWrapper = $(".sidebar__wrapper");
 // ham menu
 const hamMenu = $(".ham-menu");
 const offScreenMenu = $(".off-screen-menu");
@@ -77,6 +80,24 @@ const disableScrollOnMobile = () => {
 const enableScroll = () => {
   document.body.style.overflow = "auto";
 };
+
+// Xử lí ẩn hiện header khi scroll
+let lastScrollTop = 0;
+let ticking = false;
+const headerHeight = header.offsetHeight;
+window.addEventListener("scroll", function () {
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScrollTop && currentScroll > headerHeight) {
+    header.classList.add("header-hidden");
+    sidebarWrapper.style.top = "25px";
+  } else {
+    header.classList.remove("header-hidden");
+    sidebarWrapper.style.top = "calc(var(--header-height) + 25px)";
+  }
+
+  lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
 
 // Ham menu
 const toggleMenu = () => {

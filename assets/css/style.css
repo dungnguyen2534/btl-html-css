@@ -128,6 +128,11 @@ input {
   top: 0;
   height: var(--header-height);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  transition: top 0.2s ease;
+}
+
+.header-hidden {
+  top: calc(var(--header-height) * -1);
 }
 
 .header__navbar {
@@ -563,6 +568,7 @@ input {
 .sidebar__wrapper {
   position: sticky;
   top: calc(var(--header-height) + 25px);
+  transition: top 0.2s ease;
 }
 
 .sidebar__top,
