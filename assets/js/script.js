@@ -38,6 +38,8 @@ const lgin = $(".haveacc");
 const regisForm = $(".register");
 const regisFormEmail = $(".register__form-email");
 const regisFormSdt = $(".register__form-sdt");
+// product
+const productCard = $$(".product__card");
 
 // Bỏ hover trên mobile
 const hasTouch = () => {
@@ -137,6 +139,7 @@ cartItems.forEach((cartItem) => {
   const incr = cartItem.querySelector(".incr-quantity");
   const decr = cartItem.querySelector(".decr-quantity");
   const cartItemQty = cartItem.querySelector(".card-item__quantity-input");
+  const deleteItem = cartItem.querySelector(".cart-item__delete");
 
   incr.addEventListener("click", function (event) {
     cartItemQty.value = parseInt(cartItemQty.value) + 1;
@@ -157,6 +160,43 @@ document.addEventListener("click", (event) => {
     isCartInfoVisible = false;
   }
 });
+
+// Carousel
+if (carouselBtn && carouselBtn.length > 0) {
+  carouselBtn.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      button.dataset.clicked = "true";
+      const offset = button.dataset.carouselBtn === "next" ? 1 : -1;
+      const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
+
+      const activeSlide = slides.querySelector("[data-active]");
+      let newIndex = [...slides.children].indexOf(activeSlide) + offset;
+      if (newIndex < 0) newIndex = slides.children.length - 1;
+      if (newIndex >= slides.children.length) newIndex = 0;
+
+      slides.children[newIndex].dataset.active = true;
+      delete activeSlide.dataset.active;
+    });
+  });
+
+  let autoCarousel = setInterval(carouselHandler, 4500);
+  function carouselHandler() {
+    const nextButton = $("[data-carousel-btn='next']");
+    const prevButton = $("[data-carousel-btn='prev']");
+    const nextClicked = nextButton.dataset.clicked === "true";
+    const prevClicked = prevButton.dataset.clicked === "true";
+
+    if (!nextClicked && !prevClicked) {
+      nextButton.click();
+    } else {
+      clearInterval(autoCarousel);
+      autoCarousel = setInterval(carouselHandler, 4500);
+      nextButton.dataset.clicked = "false";
+      prevButton.dataset.clicked = "false";
+    }
+  }
+}
 
 // filter btn
 const showFilter = () => {
@@ -199,41 +239,15 @@ if (filterBtn) {
   });
 }
 
-// Carousel
-if (carouselBtn && carouselBtn.length > 0) {
-  carouselBtn.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      button.dataset.clicked = "true";
-      const offset = button.dataset.carouselBtn === "next" ? 1 : -1;
-      const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
-
-      const activeSlide = slides.querySelector("[data-active]");
-      let newIndex = [...slides.children].indexOf(activeSlide) + offset;
-      if (newIndex < 0) newIndex = slides.children.length - 1;
-      if (newIndex >= slides.children.length) newIndex = 0;
-
-      slides.children[newIndex].dataset.active = true;
-      delete activeSlide.dataset.active;
+// Xử lí chuyển hướng khi click vào product card
+if (productCard && productCard.length > 0) {
+  productCard.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      if (!e.target.closest(".product__btn")) {
+        window.location.href = "./product.html";
+      }
     });
   });
-
-  let autoCarousel = setInterval(carouselHandler, 4500);
-  function carouselHandler() {
-    const nextButton = $("[data-carousel-btn='next']");
-    const prevButton = $("[data-carousel-btn='prev']");
-    const nextClicked = nextButton.dataset.clicked === "true";
-    const prevClicked = prevButton.dataset.clicked === "true";
-
-    if (!nextClicked && !prevClicked) {
-      nextButton.click();
-    } else {
-      clearInterval(autoCarousel);
-      autoCarousel = setInterval(carouselHandler, 4500);
-      nextButton.dataset.clicked = "false";
-      prevButton.dataset.clicked = "false";
-    }
-  }
 }
 
 // Ẩn/hiện login - register
