@@ -151,6 +151,13 @@ cartItems.forEach((cartItem) => {
   });
 });
 
+document.addEventListener("click", (event) => {
+  if (!cartInf.contains(event.target) && !cartBtn.contains(event.target)) {
+    cartInf.style = "opacity: 0; visibility: hidden;";
+    isCartInfoVisible = false;
+  }
+});
+
 // filter btn
 const showFilter = () => {
   filterOpt.style = "opacity: 1; visibility: visible; height: initial";
@@ -159,76 +166,73 @@ const hideFilter = () => {
   filterOpt.style = "opacity: 0; visibility: hidden; height: 0";
 };
 
-if (!hasTouch()) {
-  filterBtn.addEventListener("mouseleave", () => {
+if (filterBtn) {
+  if (!hasTouch()) {
+    filterBtn.addEventListener("mouseleave", () => {
+      hideFilter();
+    });
+    filterBtn.addEventListener("mouseenter", () => {
+      showFilter();
+    });
+  } else {
+    filterBtn.addEventListener("click", () => {
+      const isVisible = filterOpt.style.visibility === "visible";
+      if (isVisible) {
+        hideFilter();
+      } else {
+        showFilter();
+      }
+    });
+  }
+
+  filterOpt.addEventListener("click", (e) => {
+    e.stopPropagation();
     hideFilter();
   });
-  filterBtn.addEventListener("mouseenter", () => {
-    showFilter();
-  });
-} else {
-  filterBtn.addEventListener("click", () => {
-    const isVisible = filterOpt.style.visibility === "visible";
-    if (isVisible) {
+
+  document.addEventListener("click", (event) => {
+    const isClickInsideFilterBtn = filterBtn.contains(event.target);
+    const isClickInsideFilterOpt = filterOpt.contains(event.target);
+    if (!isClickInsideFilterBtn && !isClickInsideFilterOpt) {
       hideFilter();
-    } else {
-      showFilter();
     }
   });
 }
 
-filterOpt.addEventListener("click", (e) => {
-  e.stopPropagation();
-  hideFilter();
-});
-
-// Xử lí khi click ra ngoài filter và cart(MH cảm ứng lớn)
-document.addEventListener("click", (event) => {
-  const isClickInsideFilterBtn = filterBtn.contains(event.target);
-  const isClickInsideFilterOpt = filterOpt.contains(event.target);
-
-  if (!isClickInsideFilterBtn && !isClickInsideFilterOpt) {
-    hideFilter();
-  }
-
-  if (!cartInf.contains(event.target) && !cartBtn.contains(event.target)) {
-    cartInf.style = "opacity: 0; visibility: hidden;";
-    isCartInfoVisible = false;
-  }
-});
-
 // Carousel
-carouselBtn.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    event.stopPropagation();
-    button.dataset.clicked = "true";
-    const offset = button.dataset.carouselBtn === "next" ? 1 : -1;
-    const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
+if (carouselBtn && carouselBtn.length > 0) {
+  carouselBtn.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      button.dataset.clicked = "true";
+      const offset = button.dataset.carouselBtn === "next" ? 1 : -1;
+      const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
 
-    const activeSlide = slides.querySelector("[data-active]");
-    let newIndex = [...slides.children].indexOf(activeSlide) + offset;
-    if (newIndex < 0) newIndex = slides.children.length - 1;
-    if (newIndex >= slides.children.length) newIndex = 0;
+      const activeSlide = slides.querySelector("[data-active]");
+      let newIndex = [...slides.children].indexOf(activeSlide) + offset;
+      if (newIndex < 0) newIndex = slides.children.length - 1;
+      if (newIndex >= slides.children.length) newIndex = 0;
 
-    slides.children[newIndex].dataset.active = true;
-    delete activeSlide.dataset.active;
+      slides.children[newIndex].dataset.active = true;
+      delete activeSlide.dataset.active;
+    });
   });
-});
 
-let autoCarousel = setInterval(carouselHandler, 4500);
-function carouselHandler() {
-  const nextButton = $("[data-carousel-btn='next']");
-  const prevButton = $("[data-carousel-btn='prev']");
-  const nextClicked = nextButton.dataset.clicked === "true";
-  const prevClicked = prevButton.dataset.clicked === "true";
+  let autoCarousel = setInterval(carouselHandler, 4500);
+  function carouselHandler() {
+    const nextButton = $("[data-carousel-btn='next']");
+    const prevButton = $("[data-carousel-btn='prev']");
+    const nextClicked = nextButton.dataset.clicked === "true";
+    const prevClicked = prevButton.dataset.clicked === "true";
 
-  if (!nextClicked && !prevClicked) {
-    nextButton.click();
-  } else {
-    clearInterval(autoCarousel);
-    autoCarousel = setInterval(carouselHandler, 4500);
-    nextButton.dataset.clicked = "false";
-    prevButton.dataset.clicked = "false";
+    if (!nextClicked && !prevClicked) {
+      nextButton.click();
+    } else {
+      clearInterval(autoCarousel);
+      autoCarousel = setInterval(carouselHandler, 4500);
+      nextButton.dataset.clicked = "false";
+      prevButton.dataset.clicked = "false";
+    }
   }
 }
 
@@ -362,7 +366,7 @@ lgin.addEventListener("click", () => {
   toggleVisibility(loginForgot, "hidden");
 });
 
-// Xử lí resize
+// Xử lí resize(tránh lỗi khi người dùng thay đổi kích cỡ cửa sổ)
 function handleResize() {
   enableScroll();
   if (window.innerWidth > 991.98 && hamMenu.classList.contains("active")) {
