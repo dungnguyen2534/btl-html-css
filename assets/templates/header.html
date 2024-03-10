@@ -95,12 +95,12 @@
                     <button class="decr-quantity">-</button>
                     <input
                       class="card-item__quantity-input"
-                      type="number"
+                      type="text"
+                      pattern="[0-9]*"
                       value="1"
-                      min="1"
-                      max="999"
+                      minlength="1"
                       maxlength="3"
-                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" />
+                      oninput="this.value = this.value.replace(/\D/g, '').slice(0, 3);" />
                     <button class="incr-quantity">+</button>
                   </div>
                   <p class="card-item__price">199.000đ</p>
@@ -133,7 +133,8 @@
                       value="1"
                       minlength="1"
                       maxlength="3"
-                      onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                      oninput="this.value = this.value.replace(/\D/g, '').slice(0, 3);" />
+
                     <button class="incr-quantity">+</button>
                   </div>
                   <p class="card-item__price">199.000đ</p>
