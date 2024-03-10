@@ -157,24 +157,27 @@ const hideFilter = () => {
   filterOpt.style = "opacity: 0; visibility: hidden; height: 0";
 };
 
-filterBtn.addEventListener("mouseleave", () => {
-  hideFilter();
-});
-filterBtn.addEventListener("mouseenter", () => {
-  showFilter();
-});
-
-filterBtn.addEventListener("touchstart", (e) => {
-  e.target.closest("filter-Opt").addEventListener("touchstart", (opt) => {
-    opt.stopPropagation();
-  });
-  const isVisible = filterOpt.style.visibility === "visible";
-  if (isVisible) {
+if (!hasTouch()) {
+  filterBtn.addEventListener("mouseleave", () => {
     hideFilter();
-  } else {
+  });
+  filterBtn.addEventListener("mouseenter", () => {
     showFilter();
-  }
-});
+  });
+} else {
+  filterBtn.addEventListener("click", () => {
+    filterOpt.addEventListener("click", (e) => {
+      e.stopPropagation();
+      hideFilter();
+    });
+    const isVisible = filterOpt.style.visibility === "visible";
+    if (isVisible) {
+      hideFilter();
+    } else {
+      showFilter();
+    }
+  });
+}
 
 // Xử lí khi click ra ngoài filter và cart(MH cảm ứng lớn)
 document.addEventListener("click", (event) => {
