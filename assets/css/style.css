@@ -72,6 +72,7 @@ a {
 input {
   font-size: 1.6rem;
 }
+
 /* Common */
 .btn {
   font-family: "Nunito", sans-serif;
@@ -352,7 +353,7 @@ input {
   border-radius: 8px;
   background: #fff;
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
-  transition-property: opacity, visibility;
+  transition-property: opacity, visibility, top;
   transition-duration: 0.15s;
   overscroll-behavior: none;
   z-index: 98;

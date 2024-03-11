@@ -83,18 +83,19 @@ const enableScroll = () => {
 
 // Xử lí ẩn hiện header khi scroll
 let lastScrollTop = 0;
-let ticking = false;
 const headerHeight = header.offsetHeight;
+
 window.addEventListener("scroll", function () {
   const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+  const isScrollingDown = currentScroll > lastScrollTop && currentScroll > headerHeight;
 
-  if (currentScroll > lastScrollTop && currentScroll > headerHeight) {
-    header.classList.add("header-hidden");
-    sidebarWrapper.style.top = "25px";
-  } else {
-    header.classList.remove("header-hidden");
-    sidebarWrapper.style.top = "calc(var(--header-height) + 25px)";
-  }
+  header.classList.toggle("header-hidden", isScrollingDown);
+  sidebarWrapper.style.top = isScrollingDown
+    ? "25px"
+    : "calc(var(--header-height) + 25px)";
+
+  if (window.innerWidth > 991.98)
+    cartInf.style.top = isScrollingDown ? "70px" : "calc(100% + 15px)";
 
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
@@ -183,41 +184,39 @@ document.addEventListener("click", (event) => {
 });
 
 // Carousel
-if (carouselBtn && carouselBtn.length > 0) {
-  carouselBtn.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      button.dataset.clicked = "true";
-      const offset = button.dataset.carouselBtn === "next" ? 1 : -1;
-      const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
+let autoCarousel = setInterval(carouselHandler, 4000);
+function carouselHandler() {
+  const nextButton = $("[data-carousel-btn='next']");
+  const prevButton = $("[data-carousel-btn='prev']");
+  const nextClicked = nextButton.dataset.clicked === "true";
+  const prevClicked = prevButton.dataset.clicked === "true";
 
-      const activeSlide = slides.querySelector("[data-active]");
-      let newIndex = [...slides.children].indexOf(activeSlide) + offset;
-      if (newIndex < 0) newIndex = slides.children.length - 1;
-      if (newIndex >= slides.children.length) newIndex = 0;
-
-      slides.children[newIndex].dataset.active = true;
-      delete activeSlide.dataset.active;
-    });
-  });
-
-  let autoCarousel = setInterval(carouselHandler, 4500);
-  function carouselHandler() {
-    const nextButton = $("[data-carousel-btn='next']");
-    const prevButton = $("[data-carousel-btn='prev']");
-    const nextClicked = nextButton.dataset.clicked === "true";
-    const prevClicked = prevButton.dataset.clicked === "true";
-
-    if (!nextClicked && !prevClicked) {
-      nextButton.click();
-    } else {
-      clearInterval(autoCarousel);
-      autoCarousel = setInterval(carouselHandler, 4500);
-      nextButton.dataset.clicked = "false";
-      prevButton.dataset.clicked = "false";
-    }
+  if (!nextClicked && !prevClicked) {
+    nextButton.click();
+  } else {
+    clearInterval(autoCarousel);
+    autoCarousel = setInterval(carouselHandler, 4000);
+    nextButton.dataset.clicked = "false";
+    prevButton.dataset.clicked = "false";
   }
 }
+
+carouselBtn.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    button.dataset.clicked = "true";
+    const offset = button.dataset.carouselBtn === "next" ? 1 : -1;
+    const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
+
+    const activeSlide = slides.querySelector("[data-active]");
+    let newIndex = [...slides.children].indexOf(activeSlide) + offset;
+    if (newIndex < 0) newIndex = slides.children.length - 1;
+    if (newIndex >= slides.children.length) newIndex = 0;
+
+    slides.children[newIndex].dataset.active = true;
+    delete activeSlide.dataset.active;
+  });
+});
 
 // filter btn
 const showFilter = () => {
@@ -227,24 +226,22 @@ const hideFilter = () => {
   filterOpt.style = "opacity: 0; visibility: hidden; height: 0";
 };
 
-if (filterBtn) {
-  if (!hasTouch()) {
-    filterBtn.addEventListener("mouseleave", () => {
+if (!hasTouch()) {
+  filterBtn.addEventListener("mouseleave", () => {
+    hideFilter();
+  });
+  filterBtn.addEventListener("mouseenter", () => {
+    showFilter();
+  });
+} else {
+  filterBtn.addEventListener("click", () => {
+    const isVisible = filterOpt.style.visibility === "visible";
+    if (isVisible) {
       hideFilter();
-    });
-    filterBtn.addEventListener("mouseenter", () => {
+    } else {
       showFilter();
-    });
-  } else {
-    filterBtn.addEventListener("click", () => {
-      const isVisible = filterOpt.style.visibility === "visible";
-      if (isVisible) {
-        hideFilter();
-      } else {
-        showFilter();
-      }
-    });
-  }
+    }
+  });
 
   filterOpt.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -265,7 +262,7 @@ if (productCard && productCard.length > 0) {
   productCard.forEach((card) => {
     card.addEventListener("click", (e) => {
       if (!e.target.closest(".product__btn")) {
-        window.location.href = "./product.html";
+        window.location.href = "./#!";
       }
     });
   });
