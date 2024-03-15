@@ -70,22 +70,10 @@ if (hasTouch()) {
   } catch (ex) {}
 }
 
-// Tắt scroll trên mobile(khi hiển thị modal)
-const disableScrollOnMobile = () => {
-  if (hasTouch()) {
-    document.body.style.overflow = "hidden";
-  }
-};
-
-const enableScroll = () => {
-  document.body.style.overflow = "auto";
-};
-
 // Xử lí ẩn hiện header khi scroll
 let lastScrollTop = 0;
 const headerHeight = header.offsetHeight;
-
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
   const isScrollingDown = currentScroll > lastScrollTop && currentScroll > headerHeight;
 
@@ -100,42 +88,8 @@ window.addEventListener("scroll", function () {
   lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
 
-// Ham menu
-const toggleMenu = () => {
-  hamMenu.classList.toggle("active");
-  offScreenMenu.classList.toggle("active");
-  overlay.classList.toggle("active");
-  disableScrollOnMobile();
-};
-
-// Hàm xử lí khi nhấn vào overlay
-const closeMenu = () => {
-  enableScroll();
-  hamMenu.classList.remove("active");
-  offScreenMenu.classList.remove("active");
-  overlay.classList.remove("active");
-
-  LoginForm.classList.add("hidden");
-  regisForm.classList.add("hidden");
-  regisBack.style.visibility = "hidden";
-  loginForgot.style.visibility = "hidden";
-
-  isCartInfoVisible = false;
-  cartInf.style = "opacity: 0; visibility: hidden;";
-
-  if (regisFormSdt.classList.contains("hidden")) {
-    regisFormSdt.classList.remove("hidden");
-    regisFormEmail.classList.add("hidden");
-  }
-  if (loginBtns.classList.contains("hidden")) {
-    loginBtns.classList.remove("hidden");
-    sdtLogin.classList.add("hidden");
-    emailLogin.classList.add("hidden");
-    loginBack.style.visibility = "hidden";
-  }
-};
-
-hamMenu.addEventListener("click", toggleMenu);
+// hamMenu
+hamMenu.addEventListener("click", openMenu);
 overlay.addEventListener("click", closeMenu);
 
 // cart
@@ -146,38 +100,37 @@ cartBtn.addEventListener("click", () => {
     isCartInfoVisible = true;
   } else if (window.innerWidth <= 991.98 && !isCartInfoVisible) {
     cartInf.style = "bottom: 0; opacity: 1; visibility: visible;";
-    overlay.classList.add("active");
+    activeElement(overlay);
     isCartInfoVisible = true;
     disableScrollOnMobile();
   } else {
     cartInf.style = "opacity: 0; visibility: hidden;";
-    overlay.classList.remove("active");
+    deActiveElement(overlay);
     isCartInfoVisible = false;
     enableScroll();
   }
 });
 
-cartItems.forEach((cartItem) => {
+cartItems.forEach(function (cartItem) {
   const incr = cartItem.querySelector(".incr-quantity");
   const decr = cartItem.querySelector(".decr-quantity");
   const cartItemQty = cartItem.querySelector(".card-item__quantity-input");
   const deleteItem = cartItem.querySelector(".cart-item__delete");
 
-  incr.addEventListener("click", function (event) {
+  incr.addEventListener("click", () => {
     cartItemQty.value = parseInt(cartItemQty.value) + 1;
   });
-  decr.addEventListener("click", function (event) {
-    if (parseInt(cartItemQty.value) > 1) {
+  decr.addEventListener("click", () => {
+    if (parseInt(cartItemQty.value) > 1)
       cartItemQty.value = parseInt(cartItemQty.value) - 1;
-    }
   });
   document.addEventListener("click", () => {
     if (cartItemQty.value === "" || cartItemQty.value == "0") cartItemQty.value = 1;
   });
 });
 
-document.addEventListener("click", (event) => {
-  if (!cartInf.contains(event.target) && !cartBtn.contains(event.target)) {
+document.addEventListener("click", (e) => {
+  if (!cartInf.contains(e.target) && !cartBtn.contains(e.target)) {
     cartInf.style = "opacity: 0; visibility: hidden;";
     isCartInfoVisible = false;
   }
@@ -201,9 +154,9 @@ function carouselHandler() {
   }
 }
 
-carouselBtn.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    event.stopPropagation();
+carouselBtn.forEach(function (button) {
+  button.addEventListener("click", (e) => {
+    e.stopPropagation();
     button.dataset.clicked = "true";
     const offset = button.dataset.carouselBtn === "next" ? 1 : -1;
     const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
@@ -218,21 +171,9 @@ carouselBtn.forEach((button) => {
   });
 });
 
-// filter btn
-const showFilter = () => {
-  filterOpt.style = "opacity: 1; visibility: visible; height: initial";
-};
-const hideFilter = () => {
-  filterOpt.style = "opacity: 0; visibility: hidden; height: 0";
-};
-
 if (!hasTouch()) {
-  filterBtn.addEventListener("mouseleave", () => {
-    hideFilter();
-  });
-  filterBtn.addEventListener("mouseenter", () => {
-    showFilter();
-  });
+  filterBtn.addEventListener("mouseleave", hideFilter);
+  filterBtn.addEventListener("mouseenter", showFilter);
 } else {
   filterBtn.addEventListener("click", () => {
     const isVisible = filterOpt.style.visibility === "visible";
@@ -248,12 +189,10 @@ if (!hasTouch()) {
     hideFilter();
   });
 
-  document.addEventListener("click", (event) => {
-    const isClickInsideFilterBtn = filterBtn.contains(event.target);
-    const isClickInsideFilterOpt = filterOpt.contains(event.target);
-    if (!isClickInsideFilterBtn && !isClickInsideFilterOpt) {
-      hideFilter();
-    }
+  document.addEventListener("click", (e) => {
+    const isClickInsideFilterBtn = filterBtn.contains(e.target);
+    const isClickInsideFilterOpt = filterOpt.contains(e.target);
+    if (!isClickInsideFilterBtn && !isClickInsideFilterOpt) hideFilter();
   });
 }
 
@@ -269,32 +208,19 @@ if (productCard && productCard.length > 0) {
 }
 
 // Ẩn/hiện login - register
-const hideElement = (element) => {
-  element.classList.add("hidden");
-};
-
-const showElement = (element) => {
-  element.classList.remove("hidden");
-};
-
-const toggleVisibility = (element, visibility) => {
-  element.style.visibility = visibility;
-};
-
 // login
 loginBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     showElement(LoginForm);
-    overlay.classList.add("active");
-    hamMenu.classList.remove("active");
-    offScreenMenu.classList.remove("active");
+    activeElement(overlay);
+    deActiveElement(offScreenMenu);
     disableScrollOnMobile();
   });
 });
 
 loginExit.addEventListener("click", () => {
   hideElement(LoginForm);
-  overlay.classList.remove("active");
+  deActiveElement(overlay);
   if (loginBtns.classList.contains("hidden")) {
     showElement(loginBtns);
     hideElement(sdtLogin);
@@ -306,15 +232,15 @@ loginExit.addEventListener("click", () => {
 });
 
 norLogin.addEventListener("click", () => {
-  hideElement(loginBtns);
   showElement(sdtLogin);
+  hideElement(loginBtns);
   toggleVisibility(loginBack, "visible");
   toggleVisibility(loginForgot, "hidden");
 });
 
 emailLabel.addEventListener("click", () => {
-  hideElement(sdtLogin);
   showElement(emailLogin);
+  hideElement(sdtLogin);
   toggleVisibility(loginBack, "visible");
   toggleVisibility(loginForgot, "visible");
 });
@@ -345,18 +271,16 @@ if (!loginBtns.classList.contains("hidden")) {
 // register
 regisBtn.addEventListener("click", () => {
   showElement(regisForm);
-  overlay.classList.add("active");
+  activeElement(overlay);
+  deActiveElement(offScreenMenu);
   toggleVisibility(regisBack, "hidden");
-  hamMenu.classList.remove("active");
-  offScreenMenu.classList.remove("active");
   disableScrollOnMobile();
 });
 
 regisExit.addEventListener("click", () => {
   hideElement(regisForm);
-  overlay.classList.remove("active");
-  hamMenu.classList.remove("active");
-  offScreenMenu.classList.remove("active");
+  deActiveElement(overlay);
+  deActiveElement(offScreenMenu);
   if (regisFormSdt.classList.contains("hidden")) {
     showElement(regisFormSdt);
     hideElement(regisFormEmail);
@@ -392,34 +316,101 @@ regis.addEventListener("click", () => {
 lgin.addEventListener("click", () => {
   regisExit.click();
   showElement(LoginForm);
-  overlay.classList.add("active");
-  hamMenu.classList.remove("active");
-  offScreenMenu.classList.remove("active");
+  activeElement(overlay);
+  deActiveElement(offScreenMenu);
   toggleVisibility(loginForgot, "hidden");
 });
+
+window.addEventListener("resize", handleResize);
+handleResize();
 
 // Xử lí resize(tránh lỗi khi người dùng thay đổi kích cỡ cửa sổ)
 function handleResize() {
   enableScroll();
-  if (window.innerWidth > 991.98 && hamMenu.classList.contains("active")) {
-    hamMenu.classList.remove("active");
-    offScreenMenu.classList.remove("active");
-    overlay.classList.remove("active");
+  if (window.innerWidth > 991.98 && offScreenMenu.classList.contains("active")) {
+    deActiveElement(overlay);
+    deActiveElement(offScreenMenu);
   }
-
   if (window.innerWidth > 991.98 && isCartInfoVisible) {
-    overlay.classList.remove("active");
+    deActiveElement(overlay);
     cartInf.style =
       "height: initial; bottom: initial; opacity: 1; visibility: visible;";
   } else if (window.innerWidth <= 991.98 && isCartInfoVisible) {
     cartInf.style = "bottom: 0; opacity: 1; visibility: visible;";
-    overlay.classList.add("active");
+    activeElement(overlay);
   }
-
   if (overlay.classList.contains("active") && LoginForm.classList.contains("active")) {
-    overlay.classList.add("active");
+    activeElement(overlay);
   }
 }
 
-window.addEventListener("resize", handleResize);
-handleResize();
+// Tắt scroll trên mobile(khi hiển thị modal)
+function disableScrollOnMobile() {
+  if (hasTouch()) document.body.style.overflow = "hidden";
+}
+
+function enableScroll() {
+  document.body.style.overflow = "auto";
+}
+
+// show/hidden - active/deActive
+function hideElement(e) {
+  e.classList.add("hidden");
+}
+
+function showElement(e) {
+  e.classList.remove("hidden");
+}
+
+function toggleVisibility(e, visibility) {
+  e.style.visibility = visibility;
+}
+
+function activeElement(e) {
+  e.classList.add("active");
+}
+
+function deActiveElement(e) {
+  e.classList.remove("active");
+}
+
+// Ham menu
+function openMenu() {
+  activeElement(offScreenMenu);
+  activeElement(overlay);
+  disableScrollOnMobile();
+}
+
+// Hàm xử lí khi nhấn vào overlay
+function closeMenu() {
+  enableScroll();
+  deActiveElement(offScreenMenu);
+  deActiveElement(overlay);
+
+  hideElement(LoginForm);
+  hideElement(regisForm);
+  toggleVisibility(regisBack, "hidden");
+  toggleVisibility(loginForgot, "hidden");
+
+  isCartInfoVisible = false;
+  cartInf.style = "opacity: 0; visibility: hidden;";
+
+  if (regisFormSdt.classList.contains("hidden")) {
+    showElement(regisFormSdt);
+    hideElement(regisFormEmail);
+  }
+  if (loginBtns.classList.contains("hidden")) {
+    showElement(loginBtns);
+    hideElement(sdtLogin);
+    hideElement(emailLogin);
+    toggleVisibility(loginBack, "hidden");
+  }
+}
+
+// filter btn
+function showFilter() {
+  filterOpt.style = "opacity: 1; visibility: visible; height: initial";
+}
+function hideFilter() {
+  filterOpt.style = "opacity: 0; visibility: hidden; height: 0";
+}
