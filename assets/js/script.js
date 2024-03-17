@@ -100,12 +100,12 @@ cartBtn.addEventListener("click", () => {
     isCartInfoVisible = true;
   } else if (window.innerWidth <= 991.98 && !isCartInfoVisible) {
     cartInf.style = "bottom: 0; opacity: 1; visibility: visible;";
-    activeElement(overlay);
+    active(overlay);
     isCartInfoVisible = true;
     disableScrollOnMobile();
   } else {
     cartInf.style = "opacity: 0; visibility: hidden;";
-    deActiveElement(overlay);
+    deActive(overlay);
     isCartInfoVisible = false;
     enableScroll();
   }
@@ -197,108 +197,104 @@ if (!hasTouch()) {
 }
 
 // Xử lí chuyển hướng khi click vào product card
-if (productCard && productCard.length > 0) {
-  productCard.forEach((card) => {
-    card.addEventListener("click", (e) => {
-      if (!e.target.closest(".product__btn")) {
-        window.location.href = "./#!";
-      }
-    });
-  });
-}
+// if (productCard && productCard.length > 0) {
+//   productCard.forEach((card) => {
+//     card.addEventListener("click", (e) => {
+//       if (!e.target.closest(".product__btn")) {
+//         window.location.href = "./#!";
+//       }
+//     });
+//   });
+// }
 
 // Ẩn/hiện login - register
 // login
 loginBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
-    showElement(LoginForm);
-    activeElement(overlay);
-    deActiveElement(offScreenMenu);
+    show(LoginForm);
+    active(overlay);
+    deActive(offScreenMenu);
     disableScrollOnMobile();
   });
 });
 
 loginExit.addEventListener("click", () => {
-  hideElement(LoginForm);
-  deActiveElement(overlay);
+  hide(LoginForm);
+  deActive(overlay);
   if (loginBtns.classList.contains("hidden")) {
-    showElement(loginBtns);
-    hideElement(sdtLogin);
-    hideElement(emailLogin);
-    toggleVisibility(loginBack, "hidden");
-    toggleVisibility(loginForgot, "hidden");
+    show(loginBtns);
+    hide(emailLogin, sdtLogin);
+    visibility("hidden", loginBack, loginForgot);
   }
   enableScroll();
 });
 
 norLogin.addEventListener("click", () => {
-  showElement(sdtLogin);
-  hideElement(loginBtns);
-  toggleVisibility(loginBack, "visible");
-  toggleVisibility(loginForgot, "hidden");
+  show(sdtLogin);
+  hide(loginBtns);
+  visibility("visible", loginBack);
+  visibility("hidden", loginForgot);
 });
 
 emailLabel.addEventListener("click", () => {
-  showElement(emailLogin);
-  hideElement(sdtLogin);
-  toggleVisibility(loginBack, "visible");
-  toggleVisibility(loginForgot, "visible");
+  show(emailLogin);
+  hide(sdtLogin);
+  visibility("visible", loginBack, loginForgot);
 });
 
 sdtLabel.addEventListener("click", () => {
-  showElement(sdtLogin);
-  hideElement(emailLogin);
-  toggleVisibility(loginBack, "visible");
-  toggleVisibility(loginForgot, "hidden");
+  show(sdtLogin);
+  hide(emailLogin);
+  visibility("visible", loginBack);
+  visibility("hidden", loginForgot);
 });
 
 loginBack.addEventListener("click", () => {
   if (!emailLogin.classList.contains("hidden")) {
     sdtLabel.click();
   } else if (!sdtLogin.classList.contains("hidden")) {
-    showElement(loginBtns);
-    hideElement(sdtLogin);
+    show(loginBtns);
+    hide(sdtLogin);
   }
   if (!loginBtns.classList.contains("hidden")) {
-    toggleVisibility(loginBack, "hidden");
+    visibility("hidden", loginBack);
   }
 });
 
 if (!loginBtns.classList.contains("hidden")) {
-  toggleVisibility(loginBack, "hidden");
+  visibility("hidden", loginBack);
 }
 
 // register
 regisBtn.addEventListener("click", () => {
-  showElement(regisForm);
-  activeElement(overlay);
-  deActiveElement(offScreenMenu);
-  toggleVisibility(regisBack, "hidden");
+  show(regisForm);
+  active(overlay);
+  deActive(offScreenMenu);
+  visibility("hidden", regisBack);
   disableScrollOnMobile();
 });
 
 regisExit.addEventListener("click", () => {
-  hideElement(regisForm);
-  deActiveElement(overlay);
-  deActiveElement(offScreenMenu);
+  hide(regisForm);
+  deActive(overlay, offScreenMenu);
   if (regisFormSdt.classList.contains("hidden")) {
-    showElement(regisFormSdt);
-    hideElement(regisFormEmail);
+    show(regisFormSdt);
+    hide(regisFormEmail);
   }
-  toggleVisibility(regisBack, "hidden");
+  visibility("hidden", regisBack);
   enableScroll();
 });
 
 emailLabelRe.addEventListener("click", () => {
-  hideElement(regisFormSdt);
-  showElement(regisFormEmail);
-  toggleVisibility(regisBack, "visible");
+  hide(regisFormSdt);
+  show(regisFormEmail);
+  visibility("visible", regisBack);
 });
 
 sdtLabelRe.addEventListener("click", () => {
-  showElement(regisFormSdt);
-  hideElement(regisFormEmail);
-  toggleVisibility(regisBack, "hidden");
+  show(regisFormSdt);
+  hide(regisFormEmail);
+  visibility("hidden", regisBack);
 });
 
 regisBack.addEventListener("click", () => {
@@ -315,10 +311,10 @@ regis.addEventListener("click", () => {
 
 lgin.addEventListener("click", () => {
   regisExit.click();
-  showElement(LoginForm);
-  activeElement(overlay);
-  deActiveElement(offScreenMenu);
-  toggleVisibility(loginForgot, "hidden");
+  show(LoginForm);
+  active(overlay);
+  deActive(offScreenMenu);
+  visibility("hidden", loginForgot);
 });
 
 window.addEventListener("resize", handleResize);
@@ -328,20 +324,53 @@ handleResize();
 function handleResize() {
   enableScroll();
   if (window.innerWidth > 991.98 && offScreenMenu.classList.contains("active")) {
-    deActiveElement(overlay);
-    deActiveElement(offScreenMenu);
+    deActive(overlay, offScreenMenu);
   }
   if (window.innerWidth > 991.98 && isCartInfoVisible) {
-    deActiveElement(overlay);
+    deActive(overlay);
     cartInf.style =
       "height: initial; bottom: initial; opacity: 1; visibility: visible;";
   } else if (window.innerWidth <= 991.98 && isCartInfoVisible) {
     cartInf.style = "bottom: 0; opacity: 1; visibility: visible;";
-    activeElement(overlay);
+    active(overlay);
   }
   if (overlay.classList.contains("active") && LoginForm.classList.contains("active")) {
-    activeElement(overlay);
+    active(overlay);
   }
+}
+
+// Ham menu
+function openMenu() {
+  active(offScreenMenu, overlay);
+  disableScrollOnMobile();
+}
+
+// Hàm xử lí khi nhấn vào overlay
+function closeMenu() {
+  enableScroll();
+  hide(regisForm, LoginForm);
+  deActive(offScreenMenu, overlay);
+  visibility("hidden", regisBack, loginForgot);
+  isCartInfoVisible = false;
+  cartInf.style = "opacity: 0; visibility: hidden;";
+
+  if (regisFormSdt.classList.contains("hidden")) {
+    show(regisFormSdt);
+    hide(regisFormEmail);
+  }
+  if (loginBtns.classList.contains("hidden")) {
+    show(loginBtns);
+    hide(emailLogin, sdtLogin);
+    visibility("hidden", loginBack);
+  }
+}
+
+// filter btn
+function showFilter() {
+  filterOpt.style = "opacity: 1; visibility: visible; height: initial";
+}
+function hideFilter() {
+  filterOpt.style = "opacity: 0; visibility: hidden; height: 0";
 }
 
 // Tắt scroll trên mobile(khi hiển thị modal)
@@ -353,64 +382,33 @@ function enableScroll() {
   document.body.style.overflow = "auto";
 }
 
-// show/hidden - active/deActive
-function hideElement(e) {
-  e.classList.add("hidden");
+// show/hide - active/deActive
+function hide(...elements) {
+  elements.forEach((e) => {
+    e.classList.add("hidden");
+  });
 }
 
-function showElement(e) {
-  e.classList.remove("hidden");
+function show(...elements) {
+  elements.forEach((e) => {
+    e.classList.remove("hidden");
+  });
 }
 
-function toggleVisibility(e, visibility) {
-  e.style.visibility = visibility;
+function visibility(visibility, ...elements) {
+  elements.forEach((e) => {
+    e.style.visibility = visibility;
+  });
 }
 
-function activeElement(e) {
-  e.classList.add("active");
+function active(...elements) {
+  elements.forEach((e) => {
+    e.classList.add("active");
+  });
 }
 
-function deActiveElement(e) {
-  e.classList.remove("active");
-}
-
-// Ham menu
-function openMenu() {
-  activeElement(offScreenMenu);
-  activeElement(overlay);
-  disableScrollOnMobile();
-}
-
-// Hàm xử lí khi nhấn vào overlay
-function closeMenu() {
-  enableScroll();
-  deActiveElement(offScreenMenu);
-  deActiveElement(overlay);
-
-  hideElement(LoginForm);
-  hideElement(regisForm);
-  toggleVisibility(regisBack, "hidden");
-  toggleVisibility(loginForgot, "hidden");
-
-  isCartInfoVisible = false;
-  cartInf.style = "opacity: 0; visibility: hidden;";
-
-  if (regisFormSdt.classList.contains("hidden")) {
-    showElement(regisFormSdt);
-    hideElement(regisFormEmail);
-  }
-  if (loginBtns.classList.contains("hidden")) {
-    showElement(loginBtns);
-    hideElement(sdtLogin);
-    hideElement(emailLogin);
-    toggleVisibility(loginBack, "hidden");
-  }
-}
-
-// filter btn
-function showFilter() {
-  filterOpt.style = "opacity: 1; visibility: visible; height: initial";
-}
-function hideFilter() {
-  filterOpt.style = "opacity: 0; visibility: hidden; height: 0";
+function deActive(...elements) {
+  elements.forEach((e) => {
+    e.classList.remove("active");
+  });
 }
