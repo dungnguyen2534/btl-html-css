@@ -228,6 +228,11 @@
     font-size: 1.6rem;
   }
 
+  .dots__dot {
+    width: 6px;
+    height: 6px;
+  }
+
   .filter-btn {
     width: 120px;
   }

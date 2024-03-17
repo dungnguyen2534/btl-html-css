@@ -7,6 +7,8 @@ const offScreenMenu = $(".off-screen-menu");
 const overlay = $(".overlay");
 // carousel
 const carouselBtn = $$("[data-carousel-btn]");
+const dotContainer = $(".dots");
+const carouselSlide = $$(".carousel-slide");
 // filter
 const filterBtn = $(".filter-container");
 const filterOpt = $(".filter-opt");
@@ -137,6 +139,10 @@ document.addEventListener("click", (e) => {
 });
 
 // Carousel
+createDots();
+const dots = $$(".dots__dot");
+
+updateDots();
 let autoCarousel = setInterval(carouselHandler, 4000);
 function carouselHandler() {
   const nextButton = $("[data-carousel-btn='next']");
@@ -168,9 +174,29 @@ carouselBtn.forEach(function (button) {
 
     slides.children[newIndex].dataset.active = true;
     delete activeSlide.dataset.active;
+    updateDots();
   });
 });
 
+dots.forEach((dot) => {
+  const slideIndex = dot.dataset.slide;
+  dot.addEventListener("click", () => {
+    const slidesContainer = dot
+      .closest("[data-carousel]")
+      .querySelector("[data-slides]");
+    const slides = slidesContainer.children;
+    const activeSlide = slidesContainer.querySelector("[data-active]");
+
+    delete activeSlide.dataset.active;
+    slides[slideIndex].dataset.active = true;
+
+    clearInterval(autoCarousel);
+    autoCarousel = setInterval(carouselHandler, 4000);
+    updateDots();
+  });
+});
+
+// filter
 if (!hasTouch()) {
   filterBtn.addEventListener("mouseleave", hideFilter);
   filterBtn.addEventListener("mouseenter", showFilter);
@@ -363,6 +389,26 @@ function closeMenu() {
     hide(emailLogin, sdtLogin);
     visibility("hidden", loginBack);
   }
+}
+
+// Carousel dots
+function createDots() {
+  carouselSlide.forEach((_, i) => {
+    dotContainer.insertAdjacentHTML(
+      "beforeend",
+      `<button class="dots__dot" data-slide="${i}"></button>`
+    );
+  });
+}
+
+function updateDots() {
+  carouselSlide.forEach((slide, i) => {
+    if (slide.hasAttribute("data-active")) {
+      dots[i].classList.add("dots__dot--active");
+    } else {
+      dots[i].classList.remove("dots__dot--active");
+    }
+  });
 }
 
 // filter btn

@@ -733,6 +733,32 @@ input {
   right: 0;
 }
 
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 97;
+  max-width: 60%;
+}
+
+.dots__dot {
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 100%;
+  background: rgba(215, 215, 215, 0.3);
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.dots__dot--active {
+  background: rgba(255, 255, 255, 0.5);
+}
+
 /* Product */
 .product {
   display: flex;
