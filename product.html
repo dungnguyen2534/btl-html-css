@@ -56,7 +56,102 @@
 
     <!-- main -->
     <main class="main">
-      <div class="container"></div>
+      <div class="container">
+        <div class="product-info">
+          <div class="product-info__left">
+            <img
+              src="./assets/img/gaming_004_3.webp"
+              alt=""
+              class="product-info__img" />
+            <div class="product-info__sub-imgs">
+              <img
+                src="./assets/img/gaming_004_3.webp"
+                alt=""
+                class="product-info__sub-img" />
+              <img
+                src="./assets/img/gaming_004_3.webp"
+                alt=""
+                class="product-info__sub-img" />
+              <img
+                src="./assets/img/gaming_004_3.webp"
+                alt=""
+                class="product-info__sub-img" />
+            </div>
+          </div>
+          <div class="product-info__right">
+            <div class="product-info__right-top">
+              <h1 class="product-info__name">Tên sản phẩm</h1>
+              <div class="product-info__rate">
+                <span>5.0</span>
+                <div>
+                  <img src="./assets/icon/star.svg" alt="" />
+                  <img src="./assets/icon/star.svg" alt="" />
+                  <img src="./assets/icon/star.svg" alt="" />
+                  <img src="./assets/icon/star.svg" alt="" />
+                  <img src="./assets/icon/star.svg" alt="" />
+                </div>
+                <p class="product__rate-num">50k đánh giá</p>
+                <p class="product__rate-num">200k đã bán</p>
+              </div>
+
+              <p class="product-info__desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque deserunt
+                mollitia iusto doloribus magni perferendis ea temporibus excepturi
+                tempore eaque! Repellendus laudantium fugiat pariatur amet architecto!
+                Hic harum similique, tempora neque excepturi incidunt corporis veniam
+                deserunt doloribus provident nesciunt alias obcaecati corrupti delectus
+                nihil saepe! Ea doloremque voluptatibus eveniet incidunt aliquid
+                repudiandae fugit commodi architecto nobis deleniti iure debitis facilis
+                alias expedita optio explicabo quae consectetur voluptatum illum rerum
+                dolorum, hic molestias! Porro, vitae consectetur. At vero ducimus iure
+                error, vel delectus suscipit culpa accusantium amet, magni quasi,
+                exercitationem et quaerat commodi fuga quos dolore eligendi id
+                distinctio debitis hic?
+              </p>
+            </div>
+            <div class="product-info__right-bottom">
+              <div class="product-info__cate">
+                <p>Phân loại:</p>
+                <div>
+                  <button class="btn">Phân loại 1</button>
+                  <button class="btn">Phân loại 2</button>
+                </div>
+              </div>
+              <div class="card-item__quantity product-item__quantity">
+                <p>Số lượng:</p>
+                <div class="product-item__quantity-input">
+                  <button class="decr-quantity">-</button>
+                  <input
+                    class="card-item__quantity-input"
+                    type="text"
+                    pattern="[0-9]*"
+                    value="1"
+                    minlength="1"
+                    maxlength="3"
+                    oninput="this.value = this.value.replace(/\D/g, '').slice(0, 3);" />
+                  <button class="incr-quantity">+</button>
+                  <span>150 sản phẩm có sẵn</span>
+                </div>
+              </div>
+              <p class="product-info__price">15.000.000đ</p>
+              <div class="product-info__cta">
+                <button class="btn product-info__btn">
+                  <svg
+                    fill="#fff"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512">
+                    <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                      d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
+                  </svg>
+                  THÊM VÀO GIỎ
+                </button>
+                <button class="btn product-info__btn">MUA NGAY</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- footer -->

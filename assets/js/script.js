@@ -222,15 +222,15 @@ if (!hasTouch()) {
 }
 
 // Xử lí chuyển hướng khi click vào product card
-// if (productCard && productCard.length > 0) {
-//   productCard.forEach((card) => {
-//     card.addEventListener("click", (e) => {
-//       if (!e.target.closest(".product__btn")) {
-//         window.location.href = "./#!";
-//       }
-//     });
-//   });
-// }
+if (productCard && productCard.length > 0) {
+  productCard.forEach((card) => {
+    card.addEventListener("click", (e) => {
+      if (!e.target.closest(".product__btn")) {
+        window.location.href = "./product.html";
+      }
+    });
+  });
+}
 
 // Ẩn/hiện login - register
 // login
