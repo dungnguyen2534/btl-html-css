@@ -212,7 +212,6 @@ if (!hasTouch()) {
 
   filterOpt.addEventListener("click", (e) => {
     e.stopPropagation();
-    hideFilter();
   });
 
   document.addEventListener("click", (e) => {
