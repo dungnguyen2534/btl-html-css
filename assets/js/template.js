@@ -2,7 +2,7 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-// Hàm tải template
+// Hàm tải template(khong hoat dong khi mo truc tiep index.html)
 function load(selector, path) {
   const cached = localStorage.getItem(path);
   if (cached) {

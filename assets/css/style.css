@@ -1315,7 +1315,7 @@ input {
 
 /* Product-info */
 .product-info {
-  margin: 25px 0;
+  margin: 10px 0 25px;
   display: flex;
   gap: 25px;
   background: #fff;
@@ -1344,9 +1344,9 @@ input {
 .product-info__img,
 .product-info__sub-img {
   aspect-ratio: 1/1;
-  border: 2px solid #000;
+  border: 2px solid #aaa;
   border-radius: 6px;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
 .product-info__sub-img:hover {
@@ -1484,4 +1484,15 @@ input {
   color: #55c2c3;
   background: transparent;
   border: 2px solid #55c2c3;
+}
+
+.rout {
+  display: flex;
+  gap: 6px;
+  color: #686868;
+  margin-top: 12px;
+}
+
+.rout__name {
+  cursor: pointer;
 }
